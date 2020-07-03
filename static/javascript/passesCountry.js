@@ -17,7 +17,7 @@ function callCountryBackEnd(countryName){
     
     oData.call = "ISSCountryPasses";
     oData.data =        "<Request>" +
-                          "<requestName>ISSCountryPasses<requestName>" + 
+                          "<requestName>ISSCountryPasses</requestName>" + 
                             "<params>" +
                             "<startTime>" + getCurrentTime(720) +"</startTime>" +
                             "<endTime>" + getCurrentTime() +"</endTime>" +
