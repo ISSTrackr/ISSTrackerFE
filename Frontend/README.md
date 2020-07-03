@@ -1,2 +1,0 @@
-# Frontend
-Frontend src-folder
