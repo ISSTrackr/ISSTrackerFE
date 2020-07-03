@@ -11,8 +11,7 @@ var ajaxCall = function(oData){
         dataType: 'xml',
         success: function(oReturnData) { console.log(oData.call + " Success!")
                                          oData.callback(oReturnData, oData.e); },
-        error: function() { console.log(oData.call + ' Failed!');
-                            return; },
+        error: function() { console.log(oData.call + ' Failed!');}
         // complete: function(oReturnData){ oData.callback(oReturnData, oData.e); }
     });
 }
