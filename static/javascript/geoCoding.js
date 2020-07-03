@@ -1,20 +1,15 @@
 function countriesCallBackEnd(){
-    $.ajax({
-        url: 'http://127.0.0.1:8082/GeoJson',
-        data: "<?xml version='1.0' encoding='UTF-8'?>"+
-        "<Request>"+
-        "<requestName>GeoJson<requestName>"+
-        "<params>"+
-        "<country>all</country>"+
-        "</params>"+
-        "</Request>",
-        type: 'POST',
-        crossDomain: true,
-        dataType: 'xml',
-        success: function() { console.log("Success!")},
-        error: function() { console.log('Failed!')},
-        complete: function(oData){ countriesCallback(oData);}
-    });
+    var oData = {};
+    oData.call = "GeoJson";
+    oData.data =        "<Request>"+
+                            "<requestName>GeoJson<requestName>"+
+                            "<params>"+
+                                "<country>all</country>"+
+                            "</params>"+
+                        "</Request>",
+    oData.callback = countriesCallback;
+    oData.type = "POST";
+    ajaxCall(oData);
 }
 
 function countriesCallback(oData){
