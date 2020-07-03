@@ -22,7 +22,7 @@ function callBackEndFlyBy(latlng){
 
     oData.call = "ISSpastPasses";
     oData.data =        "<Request>" +
-                            "<requestName>ISSpastPasses<requestName>" +
+                            "<requestName>ISSpastPasses</requestName>" +
                             "<params>" +
                             "<latitude>" + latlng.lat + "</latitude>" +
                             "<longitude>" + latlng.lng + "</longitude>" +
@@ -59,7 +59,7 @@ function callBackEndFlyBy(latlng){
     
     oData.call = "ISSfuturePasses";
     oData.data =        "<Request>" +
-                            "<requestName>ISSfuturePasses<requestName>" +
+                            "<requestName>ISSfuturePasses</requestName>" +
                             "<params>" +
                             "<latitude>" + latlng.lat + "</latitude>" +
                             "<longitude>" + latlng.lng + "</longitude>" +

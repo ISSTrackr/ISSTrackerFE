@@ -24,7 +24,7 @@ function rssCallBackEnd(start, end){
     var oData = {};
     oData.call = "RSS-Feed";
     oData.data =        "<Request>" +
-                            "<requestName>RSS-Feed<requestName>" +
+                            "<requestName>RSS-Feed</requestName>" +
                             "<params>" +
                                 "<startID>" + start + "</startID>" +
                                 "<endID>" + end + "</endID>" +

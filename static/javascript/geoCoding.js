@@ -51,7 +51,7 @@ function geoCodingCallBackEnd(q){
     
     oData.call = "GeocodingAddress";
     oData.data =        "<Request>" +
-                            "<requestName>Geocoding<requestName>" +
+                            "<requestName>Geocoding</requestName>" +
                             "<params>" +
                             "<q>" + q +"</q>"+
                             "</params>" +

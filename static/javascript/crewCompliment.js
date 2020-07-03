@@ -23,9 +23,7 @@ function callBackEnd(e){
 
 // creation of html DOM
 function onBoardCallback(oData, e){
-  var xmlString = oData.responseText;
-  var parser = new DOMParser; 
-  var xmlDoc = parser.parseFromString(xmlString, "text/xml"); // XML creation
+  var xmlDoc = oData;
   transform2(xmlDoc, 'xsl/astrosoniss.xsl',"issOnBoard"); // XSL transformation  
   var height=document.getElementById('mapid').offsetHeight;
   var width=document.getElementById('mapid').offsetWidth;

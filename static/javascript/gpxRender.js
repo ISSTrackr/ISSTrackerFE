@@ -45,7 +45,7 @@ function callBackEndISSDB(){
     
     oData.call = "ISSDB";
     oData.data =        "<Request>" +
-                          "<requestName>ISSDB<requestName>" + 
+                          "<requestName>ISSDB</requestName>" + 
                             "<params>" +
                               "<startTime>" + getSliderTime() + "</startTime>"+
                               "<endTime>" + getCurrentTime() + "</endTime>"+

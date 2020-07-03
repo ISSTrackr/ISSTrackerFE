@@ -24,9 +24,7 @@ function moveISSCall(){
 
 function createISS(oData) {
     // console.log("createISS");
-    var xmlString = oData.responseText;
-    var parser = new DOMParser; 
-    var xmlDoc = parser.parseFromString(xmlString, "text/xml");
+    var xmlDoc = oData;
     var lat = xmlDoc.getElementsByTagName("latitude")[0].innerHTML;
     var lon = xmlDoc.getElementsByTagName("longitude")[0].innerHTML;
 
@@ -44,9 +42,7 @@ function createISS(oData) {
 
 // function to move the ISS along the Map
 function moveISS(oData) {
-    var xmlString = oData.responseText;
-    var parser = new DOMParser; 
-    var xmlDoc = parser.parseFromString(xmlString, "text/xml");
+    var xmlDoc = oData;
     var lat = xmlDoc.getElementsByTagName("latitude")[0].innerHTML;
     var lon = xmlDoc.getElementsByTagName("longitude")[0].innerHTML;
     iss =  {
