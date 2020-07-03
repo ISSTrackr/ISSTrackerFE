@@ -9,9 +9,10 @@ var ajaxCall = function(oData){
         type: oData.type,
         crossDomain: true,
         dataType: 'xml',
-        success: function() { console.log(oData.call + " Success!") },
+        success: function(oReturnData) { console.log(oData.call + " Success!")
+                                         oData.callback(oReturnData, oData.e); },
         error: function() { console.log(oData.call + ' Failed!');
                             return; },
-        complete: function(oReturnData){ oData.callback(oReturnData, oData.e); }
+        // complete: function(oReturnData){ oData.callback(oReturnData, oData.e); }
     });
 }
