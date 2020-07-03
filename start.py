@@ -1,8 +1,8 @@
-import subprocess
+from flask import Flask, send_from_directory
 
-def startWebserver():
-    # Start Webserver at address localhost:8080 with serving directory ./ISS_Pojekt
-    subprocess.call("python3 -m http.server 8080 --bind 127.0.0.1 --directory ./Frontend/",
-                    shell=True)
+app = Flask(__name__, static_url_path='')
 
-startWebserver()
+
+@app.route('/')
+def index():
+    return send_from_directory('', "index.html")
