@@ -1,6 +1,6 @@
 function setMarker(){
     bContextMenu = true;
-    console.log("setMarker at: "+ markerLatlng)
+    // console.log("setMarker at: "+ markerLatlng)
     toggleMenuOn();  
     addMarker(markerLatlng.lat,markerLatlng.lng);
 }
