@@ -13,38 +13,38 @@ function countriesCallBackEnd(){
 function countriesCallback(oData){  
     var xmlDoc = oData;
     transform2(xmlDoc, 'xsl/countries.xsl',"countries"); // XSL transformation
-    // console.log("country dropdown");
-    //waitForXSL();
+    // console.log("country dropdown");   
 }
 
 function callGeoCoding(){
     s = document.getElementById('plz').value;
-
-    if (document.getElementById('plz').value.indexOf(",") < 0)
-        geoCodingCallBackEnd(addressParser());
-    else
+    sParse = addressParser();
+    if (sParse)
     {
-        var sLatlon = document.getElementById('plz').value;
-        sLatlon = sLatlon.split(",");  
-        var lat = sLatlon[0];
-        var lon = sLatlon[1];
-        var lat = parseFloat(lat);
-        var lon = parseFloat(lon);
-        addMarker(lat,lon,true);
+        if (document.getElementById('plz').value.indexOf(",") == -1 )
+            geoCodingCallBackEnd(addressParser());
+        else
+        {
+            var sLatlon = document.getElementById('plz').value;
+            sLatlon = sLatlon.split(",");  
+            var lat = sLatlon[0];
+            var lon = sLatlon[1];
+            var lat = parseFloat(lat);
+            var lon = parseFloat(lon);
+            addMarker(lat,lon,true);
+        }
     }
 }
-
-
 
 function addressParser(){
     var zipCode = document.getElementById('plz').value;
     var country = document.getElementById('country').value;
-    return "" + zipCode + ", " + country;
+    if (zipCode != "" || country != "")
+        return "" + zipCode + ", " + country;
 }
 
 function geoCodingCallBackEnd(q){
     var oData = {};
-
     oData.call = "GeocodingAddress";
     oData.data =        "<requestName>Geocoding</requestName>" +
                             "<params>" +
