@@ -261,8 +261,7 @@ L.Util.extend(L.KML, {
     }
 
     if (name) {
- 		layer.bindPopup(function(layer){
-		console.log("test!");
+ 		layer.bindPopup(function(layer){		
 		onCountry(name);
 		var s = "countryPasses";// + name;
 		return "<div id='infoOnCountry' class='infoOnCountry'>"+
