@@ -1,9 +1,7 @@
 var issRoute;
 
 function renderGPX(oData){
-var xmlString = oData.responseText;
-var parser = new DOMParser; 
-var xmlDoc = parser.parseFromString(xmlString, "text/xml");
+var xmlDoc = oData;
 transform3(xmlDoc, 'xsl/xml2gpx.xsl', function(gpx){
   if (issRoute)
     issRoute.removeFrom(mymap);
@@ -44,13 +42,11 @@ function callBackEndISSDB(){
     var oData = {};
     
     oData.call = "ISSDB";
-    oData.data =        "<Request>" +
-                          "<requestName>ISSDB</requestName>" + 
+    oData.data =        "<requestName>ISSDB</requestName>" + 
                             "<params>" +
                               "<startTime>" + getSliderTime() + "</startTime>"+
                               "<endTime>" + getCurrentTime() + "</endTime>"+
-                            "</params>" +
-                          "</Request>",
+                            "</params>";                        
     oData.callback = renderGPX;
     oData.type = "POST";
     ajaxCall(oData);

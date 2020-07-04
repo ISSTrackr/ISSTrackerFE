@@ -1,23 +1,19 @@
 function countriesCallBackEnd(){
     var oData = {};
     oData.call = "GeoJson";
-    oData.data =        "<Request>"+
-                            "<requestName>GeoJson<requestName>"+
+    oData.data =        "<requestName>GeoJson</requestName>"+
                             "<params>"+
                                 "<country>all</country>"+
-                            "</params>"+
-                        "</Request>",
+                            "</params>";                      
     oData.callback = countriesCallback;
     oData.type = "POST";
     ajaxCall(oData);
 }
 
-function countriesCallback(oData){
-    var xmlString = oData.responseText;
-    var parser = new DOMParser;
-    var xmlDoc = parser.parseFromString(xmlString, "text/xml"); // XML creation
+function countriesCallback(oData){  
+    var xmlDoc = oData;
     transform2(xmlDoc, 'xsl/countries.xsl',"countries"); // XSL transformation
-    console.log("country dropdown");
+    // console.log("country dropdown");
     //waitForXSL();
 }
 
@@ -48,27 +44,23 @@ function addressParser(){
 
 function geoCodingCallBackEnd(q){
     var oData = {};
-    
+
     oData.call = "GeocodingAddress";
-    oData.data =        "<Request>" +
-                            "<requestName>Geocoding</requestName>" +
+    oData.data =        "<requestName>Geocoding</requestName>" +
                             "<params>" +
                             "<q>" + q +"</q>"+
-                            "</params>" +
-                        "</Request>";
+                            "</params>";                        
     oData.callback = geoCodingCallBack;
     oData.type = "POST";
     ajaxCall(oData);
 }
 
 function geoCodingCallBack(oData){
-  var xmlString = oData.responseText;
-  var parser = new DOMParser; 
-  var xmlDoc = parser.parseFromString(xmlString, "text/xml"); // XML creation
+  var xmlDoc = oData;
   var lat = parseFloat(xmlDoc.childNodes[0].childNodes[1].childNodes[0].innerHTML);
   var lon = parseFloat(xmlDoc.childNodes[0].childNodes[1].childNodes[1].innerHTML);
   var latlng = L.latLng(lat, lon);
   addMarker(lat,lon);
   mymap.flyTo(latlng,5);
-  console.log("geoCodingCallBack"); 
+//   console.log("geoCodingCallBack"); 
 }

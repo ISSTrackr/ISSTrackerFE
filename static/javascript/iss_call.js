@@ -4,11 +4,11 @@ var oldLng;
 var latlng;
 var issIcon;
 
-function ISSCall(callback){
+function ISSCall(){
     var oData = {};
     oData.call = "ISSpos";
     oData.data =  ""
-    oData.callback = callback;
+    oData.callback = createISS;
     oData.type = "GET";   
     ajaxCall(oData);
 }
@@ -34,7 +34,7 @@ function createISS(oData) {
     oldLng = lon;
     // console.log("Lang: " + lat + " Long: " + lon);
     // console.log("moveISSbefore");     
-    ISSCall(moveISS);
+    moveISSCall();
 }
 
 
@@ -53,9 +53,9 @@ function moveISS(oData) {
         var x = parseFloat(oldLng);
         var y = parseFloat(lon);       
         // console.log("Possition difference: " + (x - y) );
-        if (Math.abs(parseFloat(oldLng) - parseFloat(lon))>1) {
-            issIcon.removeFrom(mymap);
-            createISS(true);
+        if (Math.abs(parseFloat(oldLng) - parseFloat(lon)) > 1) {
+            issIcon.removeFrom(mymap);            
+            ISSCall();
         }
 
         oldLng = lon;

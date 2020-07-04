@@ -16,24 +16,20 @@ function callCountryBackEnd(countryName){
     var oData = {};
     
     oData.call = "ISSCountryPasses";
-    oData.data =        "<Request>" +
-                          "<requestName>ISSCountryPasses</requestName>" + 
+    oData.data =        "<requestName>ISSCountryPasses</requestName>" + 
                             "<params>" +
                             "<startTime>" + getCurrentTime(720) +"</startTime>" +
                             "<endTime>" + getCurrentTime() +"</endTime>" +
                             "<country>" + countryName + "</country>" +
-                            "</params>" +
-                          "</Request>",
+                            "</params>";                        
     oData.callback = countryCallBack;
     oData.type = "POST";
     ajaxCall(oData);
 }
 
 // creation of html DOM
-function countryCallBack(oData, countryName){
-    var xmlString = oData.responseText;
-    var parser = new DOMParser;
-    var xmlDoc = parser.parseFromString(xmlString, "text/xml"); // XML creation
+function countryCallBack(oData){
+    var xmlDoc = oData;
 if( xmlDoc.childNodes[0].childNodes[1].childNodes[1].childNodes.length){
     for (var i = 0; i < xmlDoc.childNodes[0].childNodes[1].childNodes[1].childNodes.length; i++)
     {
@@ -45,7 +41,7 @@ if( xmlDoc.childNodes[0].childNodes[1].childNodes[1].childNodes.length){
 }
     document.getElementById("countryPasses").innerHTML = "";
     transform2(xmlDoc, 'xsl/countryflyby.xsl', "countryPasses");
-    console.log("PopUp: onCountry");
+    // console.log("PopUp: onCountry");
     changeCursor('default');
     setCountryPopUp = false;
 }

@@ -38,7 +38,7 @@ function onBoardCallback(oData, e){
     else
   document.getElementById("issOnBoard").style.left = (width - 340) + "px";
   
-  console.log("onBoard");
+  // console.log("onBoard");
   waitForXSL();
 }
 

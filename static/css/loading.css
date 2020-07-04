@@ -17,7 +17,7 @@
     -webkit-animation-delay: -6s;
     -moz-animation-delay: -6s;
     animation-delay: -6s;
-    /* animation-iteration-count: 10; */
+    animation-iteration-count: 10;
     stroke-dasharray: 1800;
     stroke-dashoffset: -1800;
   }

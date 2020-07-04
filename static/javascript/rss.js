@@ -23,26 +23,22 @@ function rssCall(){
 function rssCallBackEnd(start, end){
     var oData = {};
     oData.call = "RSS-Feed";
-    oData.data =        "<Request>" +
-                            "<requestName>RSS-Feed</requestName>" +
+    oData.data =      "<requestName>RSS-Feed</requestName>" +
                             "<params>" +
                                 "<startID>" + start + "</startID>" +
                                 "<endID>" + end + "</endID>" +
-                            "</params>" +
-                        "</Request>";
+                            "</params>";
     oData.callback = RSSCallback;
     oData.type = "POST";
     ajaxCall(oData);
 }
 
 function RSSCallback(oData){ 
-    var xmlString = oData.responseText;
-    var parser = new DOMParser;
-    var xmlDoc = parser.parseFromString(xmlString, "text/xml"); // XML creation
+    var xmlDoc = oData
     if (xmlDoc.childNodes[0].childNodes[1].childNodes.length > 0)
     {
         transform2(xmlDoc, 'xsl/rssfeednasa.xsl',"mySidebar"); // XSL transformation
-        console.log("RSS-Feed");       
+        // console.log("RSS-Feed");       
     }
     else
      rssClick(-1);

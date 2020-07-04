@@ -55,6 +55,6 @@ function mousewheelHandler(e) {
 
     circle.setRadius( parseInt(output.innerHTML) * 1000);
     slider.value = output.innerHTML;    
-    console.log(e.deltaY);
+    // console.log(e.deltaY);
     }
 }

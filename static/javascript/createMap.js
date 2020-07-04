@@ -6,7 +6,7 @@ var menuState;
 var active;
 
 function createMap() {
-    console.log("create map");
+    // console.log("create map");
     mymap = L.map('mapid',{
         // continuousWorld:false,
         worldCopyJump:true,
@@ -48,7 +48,7 @@ function createMap() {
 
     mymap.on('contextmenu', function(e) {
         removePopUps();
-        console.log(e);    
+        // console.log(e);    
         markerLatlng = e.latlng;
         toggleMenuOn(e.originalEvent);    
       });
@@ -176,20 +176,14 @@ function parse2localTime(s){
 
 
 $(document).ready(function () {
-    console.log("create map call");   
+    // console.log("create map call");   
     var mymap;  
     createMap();
     ISSCall(createISS);  
     loadingText(1);
-    // drawSVG();
-    // coordinate2pixel('xml/germany.xml');
-    // renderGPX();
-    // callBackEndISSDB();
-    // addMarker(50.5,30.5);
     getRadiusSliderValue();
     getSliderValue();
     rssCall();
-    // callBackEnd();
     countriesCallBackEnd();
     changeCursor('wait');
 
