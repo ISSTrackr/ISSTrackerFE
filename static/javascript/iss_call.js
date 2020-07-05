@@ -19,9 +19,6 @@ function moveISSCall(){
     oData.data =  ""
     oData.callback = moveISS;
     oData.type = "GET"; 
-    $(".overlay").hide();
-    $(".loadwrapper").hide();
-    changeCursor('default');  
     ajaxCall(oData);
 }
 
@@ -56,6 +53,7 @@ function moveISS(oData) {
         if (Math.abs(parseFloat(oldLng) - parseFloat(lon)) > 1) {
             issIcon.removeFrom(mymap);            
             ISSCall();
+            return;
         }
         oldLng = lon;
         // console.log("moveISS");
@@ -70,8 +68,12 @@ function moveISS(oData) {
         }
         issIcon.start();
         // console.log("Lang: " + lat + " Long: " + lon);
+        $(".overlay").hide();
+        $(".loadwrapper").hide();
+        changeCursor('default');  
+        setTimeout(moveISSCall, 5000);
     }  
-    setTimeout(moveISSCall, 5000);
+    
 }
 
 function followISS(){

@@ -1,4 +1,5 @@
-var ajaxCall = function(oData){    
+var ajaxCall = function(oData){
+    var date = new Date;    
     if(!oData.e)
         oData.e= "";
     if (oData.type == "POST")
@@ -18,9 +19,10 @@ var ajaxCall = function(oData){
             cache: false,
             headers: {  'Access-Control-Allow-Origin': 'https://iss-trackr-api.azurewebsites.net/' + oData.call},   
             data: oData.data,
-            success: function(oReturnData) { console.log(oData.call + " Success!")
+            success: function(oReturnData) { console.log(date.toLocaleTimeString() + " | " +  oData.call + " Success!")
                                             oData.callback(oReturnData, oData.e); },
-            error: function(oReturnData) { console.log(oData.call + ' Failed!'); }      
+            error: function(oReturnData) {  console.log(oData.call + ' Failed!');
+                                            console.log(oReturnData) }      
         });
     }
     else
@@ -31,9 +33,10 @@ var ajaxCall = function(oData){
             type: oData.type,            
             crossDomain: true,
             dataType: 'xml',
-            success: function(oReturnData) { console.log(oData.call + " Success!")
-                                            oData.callback(oReturnData, oData.e); },
-            error: function(oReturnData) { console.log(oData.call + ' Failed!'); }      
+            success: function(oReturnData) { console.log(date.toLocaleTimeString() + " | " + oData.call + " Success!")
+                                             oData.callback(oReturnData, oData.e); },
+            error: function(oReturnData)   {console.log(oData.call + ' Failed!');
+                                            console.log(oReturnData) }   
         });
     }
 
