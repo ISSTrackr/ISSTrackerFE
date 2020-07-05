@@ -177,15 +177,15 @@ function parse2localTime(s){
 
 $(document).ready(function () {
     // console.log("create map call");   
+    changeCursor('wait');
+    loadingText(1);
     var mymap;  
     createMap();
     ISSCall(createISS);  
-    loadingText(1);
     getRadiusSliderValue();
     getSliderValue();
     rssCall();
     countriesCallBackEnd();
-    changeCursor('wait');
 
     $('form input').keydown(function (e) {
         if (e.keyCode == 13) {
