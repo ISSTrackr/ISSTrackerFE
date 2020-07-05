@@ -1,10 +1,6 @@
 function countriesCallBackEnd(){
     var oData = {};
-    oData.call = "CountryList";
-    oData.data =        "<requestName>CountryList</requestName>"+
-                            "<params>"+
-                                "<country>all</country>"+
-                            "</params>";                      
+    oData.call = "CountryList";                    
     oData.callback = countriesCallback;
     oData.type = "GET";
     ajaxCall(oData);
