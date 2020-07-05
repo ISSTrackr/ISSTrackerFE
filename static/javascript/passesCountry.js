@@ -30,13 +30,13 @@ function callCountryBackEnd(countryName){
 // creation of html DOM
 function countryCallBack(oData){
     var xmlDoc = oData;
-if( xmlDoc.childNodes[0].childNodes[1].childNodes[1].childNodes.length){
-    for (var i = 0; i < xmlDoc.childNodes[0].childNodes[1].childNodes[1].childNodes.length; i++)
+if( xmlDoc.childNodes[1].childNodes[1].childNodes[1].childNodes.length){
+    for (var i = 0; i < xmlDoc.childNodes[1].childNodes[1].childNodes[1].childNodes.length; i++)
     {
-       if(xmlDoc.childNodes[0].childNodes[1].childNodes[1].childNodes[i].childNodes[0].innerHTML != "")
-        xmlDoc.childNodes[0].childNodes[1].childNodes[1].childNodes[i].childNodes[0].innerHTML = parse2localTime(xmlDoc.childNodes[0].childNodes[1].childNodes[1].childNodes[i].childNodes[0].innerHTML);
-      if(xmlDoc.childNodes[0].childNodes[1].childNodes[1].childNodes[i].childNodes[1].innerHTML != "")
-        xmlDoc.childNodes[0].childNodes[1].childNodes[1].childNodes[i].childNodes[1].innerHTML = parse2localTime(xmlDoc.childNodes[0].childNodes[1].childNodes[1].childNodes[i].childNodes[1].innerHTML);
+       if(xmlDoc.childNodes[1].childNodes[1].childNodes[1].childNodes[i].childNodes[0].innerHTML != "")
+        xmlDoc.childNodes[1].childNodes[1].childNodes[1].childNodes[i].childNodes[0].innerHTML = parse2localTime(xmlDoc.childNodes[1].childNodes[1].childNodes[1].childNodes[i].childNodes[0].innerHTML);
+      if(xmlDoc.childNodes[1].childNodes[1].childNodes[1].childNodes[i].childNodes[1].innerHTML != "")
+        xmlDoc.childNodes[1].childNodes[1].childNodes[1].childNodes[i].childNodes[1].innerHTML = parse2localTime(xmlDoc.childNodes[1].childNodes[1].childNodes[1].childNodes[i].childNodes[1].innerHTML);
     }
 }
     document.getElementById("countryPasses").innerHTML = "";
