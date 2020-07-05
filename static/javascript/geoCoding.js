@@ -52,8 +52,8 @@ function geoCodingCallBackEnd(q){
 
 function geoCodingCallBack(oData){
   var xmlDoc = oData;
-  var lat = parseFloat(xmlDoc.childNodes[0].childNodes[1].childNodes[0].innerHTML);
-  var lon = parseFloat(xmlDoc.childNodes[0].childNodes[1].childNodes[1].innerHTML);
+  var lat = parseFloat(xmlDoc.childNodes[1].childNodes[1].childNodes[0].innerHTML);
+  var lon = parseFloat(xmlDoc.childNodes[1].childNodes[1].childNodes[1].innerHTML);
   var latlng = L.latLng(lat, lon);
   addMarker(lat,lon);
   mymap.flyTo(latlng,5);
