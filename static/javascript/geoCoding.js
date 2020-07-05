@@ -1,18 +1,18 @@
 function countriesCallBackEnd(){
     var oData = {};
-    oData.call = "GeoJson";
-    oData.data =        "<requestName>GeoJson</requestName>"+
+    oData.call = "CountryList";
+    oData.data =        "<requestName>CountryList</requestName>"+
                             "<params>"+
                                 "<country>all</country>"+
                             "</params>";                      
     oData.callback = countriesCallback;
-    oData.type = "POST";
+    oData.type = "GET";
     ajaxCall(oData);
 }
 
 function countriesCallback(oData){  
-    var xmlDoc = oData;
-    transform2(xmlDoc, 'xsl/countries.xsl',"countries"); // XSL transformation
+    console.log(oData);
+    transform2(oData, "xsl/countries.xsl", "countries"); // XSL transformation
     // console.log("country dropdown");   
 }
 
