@@ -33,11 +33,16 @@ function rssCallBackEnd(start, end){
     ajaxCall(oData);
 }
 
+<<<<<<< HEAD
 function RSSCallback(oData){ 
     var xmlDoc = oData
     if (xmlDoc.childNodes[1].childNodes[1].childNodes.length > 0)
+=======
+function RSSCallback(oData){    
+    if (oData.childNodes[1].childNodes[1].childNodes.length > 0)
+>>>>>>> d8ef0d436a294f4cdceb0f1627e2a96ac110c3c5
     {
-        transform2(xmlDoc, 'xsl/rssfeednasa.xsl',"mySidebar"); // XSL transformation
+        transform2(oData, 'xsl/rssfeednasa.xsl',"mySidebar"); // XSL transformation
         // console.log("RSS-Feed");       
     }
     else

@@ -49,6 +49,7 @@ function displayResult(xmlInput, xsltSheet,target) {
   if (typeof XSLTProcessor !== 'undefined') {
     var proc = new XSLTProcessor();
     proc.importStylesheet(xsltSheet);
+    console.log(proc.transformToFragment(xmlInput, document));
     document.getElementById(target).appendChild(proc.transformToFragment(xmlInput, document));
   }
   else if (typeof xmlInput.transformNode !== 'undefined') {

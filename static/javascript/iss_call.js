@@ -23,10 +23,9 @@ function moveISSCall(){
 }
 
 function createISS(oData) {
-    // console.log("createISS");
-    var xmlDoc = oData;
-    var lat = xmlDoc.getElementsByTagName("latitude")[0].innerHTML;
-    var lon = xmlDoc.getElementsByTagName("longitude")[0].innerHTML;
+    // console.log("createISS");   
+    var lat = oData.getElementsByTagName("latitude")[0].innerHTML;
+    var lon = oData.getElementsByTagName("longitude")[0].innerHTML;
 
     latlng = L.latLng(lat, lon);
     mymap.flyTo(latlng, 6);
@@ -38,10 +37,9 @@ function createISS(oData) {
 }
 
 // function to move the ISS along the Map
-function moveISS(oData) {
-    var xmlDoc = oData;
-    var lat = xmlDoc.getElementsByTagName("latitude")[0].innerHTML;
-    var lon = xmlDoc.getElementsByTagName("longitude")[0].innerHTML;
+function moveISS(oData) {   
+    var lat = oData.getElementsByTagName("latitude")[0].innerHTML;
+    var lon = oData.getElementsByTagName("longitude")[0].innerHTML;
     iss =  {
         "Latitide": lat,
         "Longitude": lon

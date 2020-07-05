@@ -1,6 +1,6 @@
 <!ELEMENT Request (requestName, data)>
 <!ELEMENT requestName (#CDATA)>
-<!ELEMENT data (timeValue)>
+<!ELEMENT data (timeValue+)>
 <!ATTLIST timeValue index CDATA #REQUIRED>
 <!ELEMENT timeValue (futurePassDatetime, duration)>
 <!ELEMENT futurePassDatetime (#PCDATA)>
