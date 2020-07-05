@@ -4,6 +4,7 @@ var markerLatlng;
 var menu;
 var menuState;
 var active;
+var bStart = false;
 
 function createMap() {
     // console.log("create map");
@@ -186,7 +187,10 @@ $(document).ready(function () {
     $('form input').keydown(function (e) {
         if (e.keyCode == 13) {
             e.preventDefault();
-            callGeoCoding()
+            if (bStart)
+                callGeoCoding();
+            else
+                start();
             return false;
         }
     });
