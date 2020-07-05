@@ -41,6 +41,5 @@ var ajaxCall = function(oData){
                                             console.log(oReturnData) }   
         });
     }
-
 }
 

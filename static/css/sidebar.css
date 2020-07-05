@@ -39,71 +39,66 @@
   --color-button-hover: #444
 }
 
- /* The sidebar menu */
- .sidebar {
-    height: 100%; /* 100% Full-height */
-    width: 800px; /* 0 width - change this with JavaScript */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
-    top: 0;
-    right: -800px;
-    opacity: .9;
-    background-color: var(--color-bg);
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding: 5px;
-    transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
-    color: #FFFFFF;
-    display: flex;
-    align-items: center;
-    scrollbar-width: thin;
-  }
+/* The sidebar menu */
+.sidebar {
+  height: 100%; /* 100% Full-height */
+  width: 800px; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0;
+  right: -800px;
+  opacity: .9;
+  background-color: var(--color-bg);
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding: 5px;
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  scrollbar-width: thin;
+}
 
-  .sidebar:hover {
-    opacity: 1.0;
-  }
+.sidebar:hover {
+  opacity: 1.0;
+}
 
-  /* The sidebar links */
-  .sidebar a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-  }
+/* The sidebar links */
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
 
-  /* When you mouse over the navigation links, change their color */
-  /*.sidebar a:hover {*/
-  /*  color: #f1f1f1;*/
-  /*}*/
+/* The button used to open the sidebar */
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: var(--color-bg);
+  color: var(--color-color);
+  padding: 10px 15px;
+  border: none;
+  margin-top: 30px;
+  border-radius: 10px 0 0 10px;
+}
 
-  /* The button used to open the sidebar */
-  .openbtn {
-    font-size: 20px;
-    cursor: pointer;
-    background-color: var(--color-bg);
-    color: var(--color-color);
-    padding: 10px 15px;
-    border: none;
-    margin-top: 30px;
-    border-radius: 10px 0 0 10px;
-  }
+.openbtn:hover {
+  background-color: var(--color-button-hover);
+}
 
-  .openbtn:hover {
-    background-color: var(--color-button-hover);
-  }
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-right .5s; /* If you want a transition effect */
+  padding:0;
+}
 
-  /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
-  #main {
-    transition: margin-right .5s; /* If you want a transition effect */
-    padding:0;
-  }
-
-  /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-  @media screen and (max-height: 450px) {
-    .sidebar {padding-top: 15px;}
-    .sidebar a {font-size: 18px;}
-  }
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
 
 /* Standard syntax */
 @keyframes infinite-rotate {
@@ -120,7 +115,7 @@
 
 
  /* The sidebar menu */
- .sidebarLeft {
+.sidebarLeft {
   pointer-events: none;
   overflow: hidden;
   height: inherit;
@@ -225,19 +220,15 @@ float: left;
   display: none;
 }
 
-
-
 .checkbox-show{
   /* margin-top: 1em; */
   display: "";
 }
 
-
 .checkbox-show:first-of-type{
   /* margin-top:2em; */
   display: "";
 }
-
 
 /* Checkbox Styling */
  input[type="checkbox"] {
@@ -257,9 +248,11 @@ float: left;
      margin-top: 15px;
      position: relative;
  }
+
  input[type="checkbox"] + label:hover {
      cursor: pointer;
  }
+
  input[type="checkbox"] + label::before {
      width: 20px;
      height: 20px;
@@ -272,104 +265,117 @@ float: left;
      transition: margin 0.1s linear;
      box-shadow: 0px 0px 2px #aaa;
  }
+ 
  input[type="checkbox"]:checked+label{
      background-color: rgb(11, 61, 145);
  }
- input[type="checkbox"]:checked+label::before {
+
+ input[type="checkbox"]:disabled+label{
+  background-color: gray;
+  color: gray;
+}
+
+input[type="checkbox"]:checked+label::before {
      margin: 0 0 0 30px;
      background-color: white;
- }
- .checkboxdarklightmode input[type="checkbox"] + label::after {
+}
+
+input[type="checkbox"]:disabled+label::before {
+  margin: 0 0 0 30px;
+  background-color: darkgray;
+}
+
+.checkboxdarklightmode input[type="checkbox"] + label::after {
      content: "light mode";
      position: absolute;
      left: 70px;
      top: 0;
      width: 100px;
      font-family: Verdana, sans-serif;
- }
- .checkbox1 input[type="checkbox"] + label::after {
+}
+
+.checkbox1 input[type="checkbox"] + label::after {
      content: "follow ISS";
      position: absolute;
      left: 70px;
      top: 0;
      width: 100px;
      font-family: Verdana, sans-serif;
- }
- .checkbox2 input[type="checkbox"] + label::after {
+}
+
+.checkbox2 input[type="checkbox"] + label::after {
      content: "draw ISS route";
      position: absolute;
      left: 70px;
      top: 0;
      width: 150px;
      font-family: Verdana, sans-serif;
- }
+}
 
- .checkboxdarklightmode{
+.checkboxdarklightmode{
      width: 100%;
      position: static;
      height: 40px;
      margin-bottom: 30px;
- }
+}
 
-
- .checkbox1{
+.checkbox1{
      width: 100%;
      position: static;
      height: 40px;
- }
+}
 
- .checkbox2{
+.checkbox2{
      width: 100%;
      position: static;
-     height: 40px;
-     /* margin-bottom: 30px; */
- }
+     height: 40px;  
+}
 
 /* Input styling*/
- .input{
-     border-radius: 5px;
-     border: 2px solid #ddd;
-     color: black;
-     margin-top: 2.5px;
-     pointer-events: auto;
- }
+.input{
+    border-radius: 5px;
+    border: 2px solid #ddd;
+    color: black;
+    margin-top: 2.5px;
+    pointer-events: auto;
+}
 
- .input:focus{
-     border: 3px solid rgb(11, 61, 145);
- }
+.input:focus{
+    border: 3px solid rgb(11, 61, 145);
+}
 
- /*ISS Button Styling*/
- .issButton{
-     height: 36px;
-     width: 36px;
-     margin-left: 5px;
-     margin-bottom: 2px;
-     padding: 0;
-     border-radius: 4px;
-     border: 2px solid #ddd;
- }
+/*ISS Button Styling*/
+.issButton{
+    height: 36px;
+    width: 36px;
+    margin-left: 5px;
+    margin-bottom: 2px;
+    padding: 0;
+    border-radius: 4px;
+    border: 2px solid #ddd;
+}
 
- .issButton:active{
-     border: 3px solid rgb(11, 61, 145);
- }
+.issButton:active{
+    border: 3px solid rgb(11, 61, 145);
+}
 
- .issButton:hover{
-     border: 3px solid rgb(11, 61, 145);
- }
+.issButton:hover{
+    border: 3px solid rgb(11, 61, 145);
+}
 
-  #leftTop{
-    position: relative;
-   
-  }
+#leftTop{
+  position: relative;
+  
+}
 
-  #leftBottom{
-    overflow-y: auto;
-    overflow-x: hidden;
-    height: 95%;
-    scrollbar-width: thin;
-  }
+#leftBottom{
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 95%;
+  scrollbar-width: thin;
+}
 
-  body{
-    scrollbar-width: thin;
-    scrollbar-color: var(--color-bg);
-  }
+body{
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-bg);
+}

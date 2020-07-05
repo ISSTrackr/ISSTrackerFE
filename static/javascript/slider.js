@@ -39,4 +39,4 @@ function sliderTimeMoved(){
     // console.log("time slider moved");
     // console.log(posMarker._latlng);
   }
- }
+}

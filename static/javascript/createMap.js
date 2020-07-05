@@ -121,7 +121,6 @@ function loadingText() {
     setTimeout(loadingText, 20);
 }
 
-
 function changeCursor(cursor){
     document.body.style.cursor = cursor;  
     // document.getElementById("mapid").style.cursor = "none";
@@ -133,8 +132,6 @@ function getSliderTime(){
 }
 
 function getCurrentTime(past){
- 
-
     var date = new Date(); 
     if (past) {
         var time = date.setTime( date.getTime() - past*60*1000);
@@ -173,7 +170,6 @@ function parse2localTime(s){
     test =  oDate.toLocaleString();
     return oDate.toLocaleString();
   }
-
 
 $(document).ready(function () {
     // console.log("create map call");   

@@ -12,44 +12,31 @@ function load(url, callback) {
 
 // transform xml with xsl 
 function transform(xml, xsl,target) {
-  load(
-    xml,
-    function(inputXml) {
-      load(
-        xsl,
-        function(xsltSheet) {
+  load(xml, function(inputXml) {
+      load(xsl, function(xsltSheet) {
           displayResult(inputXml, xsltSheet,target);
-        }
-      );
-    }
-  );
+        });
+    });
 }
 
 function transform2(xml, xsl, target) {  
-      load(
-        xsl,
-        function(xsltSheet) {
-          displayResult(xml, xsltSheet,target);
-        }
-      );
-    }
+  load(xsl, function(xsltSheet) {
+      displayResult(xml, xsltSheet,target);
+    });
+}
 
 function transform3(xml, xsl, callback) {  
-      load(
-        xsl,
-        function(xsltSheet) {
-          callback(returnResult(xml, xsltSheet));
-        }
-      );
-    }
+  load(xsl, function(xsltSheet) {
+      callback(returnResult(xml, xsltSheet));
+    });
+}
 
 
 // display result of xsl tranformation
-function displayResult(xmlInput, xsltSheet,target) {
+function displayResult(xmlInput, xsltSheet,target) { 
   if (typeof XSLTProcessor !== 'undefined') {
-    var proc = new XSLTProcessor();
-    proc.importStylesheet(xsltSheet);
-    // console.log(proc.transformToFragment(xmlInput, document));
+    var proc = new XSLTProcessor(); 
+    proc.importStylesheet(xsltSheet);  
     document.getElementById(target).appendChild(proc.transformToFragment(xmlInput, document));
   }
   else if (typeof xmlInput.transformNode !== 'undefined') {

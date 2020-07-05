@@ -1,5 +1,6 @@
 
 var bFollowISS = false;
+var bFirstLoad = false;
 var oldLng;
 var latlng;
 var issIcon;
@@ -66,12 +67,15 @@ function moveISS(oData) {
         }
         issIcon.start();
         // console.log("Lang: " + lat + " Long: " + lon);
-        $(".overlay").hide();
-        $(".loadwrapper").hide();
-        changeCursor('default');  
+        if (!bFirstLoad)
+        {
+            $(".overlay").hide();
+            $(".loadwrapper").hide();
+            changeCursor('default');  
+            bFirstLoad= false;
+        }
         setTimeout(moveISSCall, 5000);
-    }  
-    
+    }    
 }
 
 function followISS(){

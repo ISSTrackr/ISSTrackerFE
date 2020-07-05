@@ -35,11 +35,11 @@ function callBackEndFlyBy(latlng){
    function renderFlyBy(oData){    
     var xmlDoc = oData;
     document.getElementById("pastpasses").innerHTML = "";
-    if(xmlDoc.childNodes[0].childNodes[1].childNodes[1].childNodes.length){
-    for (var i = 0; i < xmlDoc.childNodes[0].childNodes[1].childNodes[1].childNodes.length; i++)
+    if(xmlDoc.childNodes[1].childNodes[1].childNodes[1].childNodes.length){
+    for (var i = 0; i < xmlDoc.childNodes[1].childNodes[1].childNodes[1].childNodes.length; i++)
     {
-      xmlDoc.childNodes[0].childNodes[1].childNodes[1].childNodes[i].childNodes[0].innerHTML = parse2localTime(xmlDoc.childNodes[0].childNodes[1].childNodes[1].childNodes[i].childNodes[0].innerHTML);
-      xmlDoc.childNodes[0].childNodes[1].childNodes[1].childNodes[i].childNodes[1].innerHTML = parse2localTime(xmlDoc.childNodes[0].childNodes[1].childNodes[1].childNodes[i].childNodes[1].innerHTML);
+      xmlDoc.childNodes[1].childNodes[1].childNodes[1].childNodes[i].childNodes[0].innerHTML = parse2localTime(xmlDoc.childNodes[1].childNodes[1].childNodes[1].childNodes[i].childNodes[0].innerHTML);
+      xmlDoc.childNodes[1].childNodes[1].childNodes[1].childNodes[i].childNodes[1].innerHTML = parse2localTime(xmlDoc.childNodes[1].childNodes[1].childNodes[1].childNodes[i].childNodes[1].innerHTML);
     }}
     transform2(xmlDoc, 'xsl/pastpasses.xsl',"pastpasses"); // XSL transformation
     // console.log("renderFlyBy");
@@ -72,9 +72,9 @@ function callBackEndFlyBy(latlng){
     {
     var xmlDoc = oData
     document.getElementById("flyby").innerHTML = "";
-    for (var i = 0; i < xmlDoc.childNodes[0].childNodes[1].childNodes[0].childNodes.length; i++)
+    for (var i = 0; i < xmlDoc.childNodes[1].childNodes[1].childNodes[0].childNodes.length; i++)
     {
-      xmlDoc.childNodes[0].childNodes[1].childNodes[0].childNodes[i].firstChild.innerHTML = parse2localTime(xmlDoc.childNodes[0].childNodes[1].childNodes[0].childNodes[i].firstChild.innerHTML);
+      xmlDoc.childNodes[1].childNodes[1].childNodes[0].childNodes[i].firstChild.innerHTML = parse2localTime(xmlDoc.childNodes[1].childNodes[1].childNodes[0].childNodes[i].firstChild.innerHTML);
     }
     transform2(xmlDoc, 'xsl/flyby.xsl',"flyby"); // XSL transformation
     // console.log("renderFutureFlyBy");     

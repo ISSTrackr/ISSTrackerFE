@@ -24,16 +24,18 @@ transform3(xmlDoc, 'xsl/xml2gpx.xsl', function(gpx){
       mymap.fitBounds(e.target.getBounds());
       $(".overlay").hide();
       $(".loadwrapper").hide();
+      document.getElementById("drawISSroute").disabled=false;     
     }).addTo(mymap);
   })
 };
 
 function callBackEndISSDB(){
   var checkbox =  document.getElementById("drawISSroute")
-  if (!checkbox.checked) {
+  if (!checkbox.checked) {    
     if (issRoute)
     issRoute.removeFrom(mymap);
   } else {
+    checkbox.disabled = true;
     $(".overlay").show();
     $(".loadwrapper").show();
     var x =  getCurrentTime();
