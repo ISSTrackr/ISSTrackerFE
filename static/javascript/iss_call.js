@@ -48,7 +48,7 @@ function moveISS(oData) {
         var x = parseFloat(oldLng);
         var y = parseFloat(lon);       
         // console.log("Possition difference: " + (x - y) );
-        if (Math.abs(parseFloat(oldLng) - parseFloat(lon)) > 1) {
+        if (parseFloat(oldLng) > parseFloat(lon)) {
             issIcon.removeFrom(mymap);            
             ISSCall();
             return;

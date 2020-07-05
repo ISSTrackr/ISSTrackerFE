@@ -6,8 +6,7 @@ function countriesCallBackEnd(){
     ajaxCall(oData);
 }
 
-function countriesCallback(oData){  
-    console.log(oData);
+function countriesCallback(oData){     
     transform2(oData, "xsl/countries.xsl", "countries"); // XSL transformation
     // console.log("country dropdown");   
 }
