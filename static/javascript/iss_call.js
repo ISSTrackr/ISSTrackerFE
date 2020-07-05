@@ -18,7 +18,10 @@ function moveISSCall(){
     oData.call = "ISSpos";
     oData.data =  ""
     oData.callback = moveISS;
-    oData.type = "GET";   
+    oData.type = "GET"; 
+    $(".overlay").hide();
+    $(".loadwrapper").hide();
+    changeCursor('default');  
     ajaxCall(oData);
 }
 
@@ -37,9 +40,6 @@ function createISS(oData) {
     moveISSCall();
 }
 
-
-
-
 // function to move the ISS along the Map
 function moveISS(oData) {
     var xmlDoc = oData;
@@ -57,7 +57,6 @@ function moveISS(oData) {
             issIcon.removeFrom(mymap);            
             ISSCall();
         }
-
         oldLng = lon;
         // console.log("moveISS");
         latlng = L.latLng(lat, lon);
@@ -69,12 +68,8 @@ function moveISS(oData) {
             easeLinearity: 1
         });             
         }
-
         issIcon.start();
         // console.log("Lang: " + lat + " Long: " + lon);
-        $(".overlay").hide();
-        $(".loadwrapper").hide();
-        changeCursor('default');
     }  
     setTimeout(moveISSCall, 5000);
 }
@@ -108,7 +103,6 @@ var issPNG = L.icon({
     shadowAnchor: [4, 62],  // the same for the shadow
     popupAnchor: [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
-
 
 function create(strecke) {
     issIcon = L.Marker.movingMarker(strecke, [100000], { 
