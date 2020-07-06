@@ -23,8 +23,7 @@ transform3(xmlDoc, 'xsl/xml2gpx.xsl', function(gpx){
       }).on('loaded', function(e) {
       mymap.fitBounds(e.target.getBounds());
       document.getElementById("drawISSroute").disabled=false;   
-      $(".overlay").hide();
-      $(".loadwrapper").hide();  
+      document.getElementById("loadwrapper").style.display="none";
     }).addTo(mymap);
   })
 };
@@ -35,9 +34,8 @@ function callBackEndISSDB(){
     if (issRoute)
     issRoute.removeFrom(mymap);
   } else {
-    checkbox.disabled = true;
-    $(".overlay").show();
-    $(".loadwrapper").show();
+    checkbox.disabled = true;    
+    document.getElementById("loadwrapper").style.display="";
     var x =  getCurrentTime();
     var y = getSliderTime();
 

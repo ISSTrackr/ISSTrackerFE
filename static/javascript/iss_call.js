@@ -69,8 +69,7 @@ function moveISS(oData) {
         // console.log("Lang: " + lat + " Long: " + lon);
         if (!bFirstLoad)
         {
-            $(".overlay").hide();
-            $(".loadwrapper").hide();
+            document.getElementById("loadwrapper").style.display="none";
             changeCursor('default');  
             bFirstLoad= false;
         }
