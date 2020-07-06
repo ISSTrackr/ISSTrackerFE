@@ -75,6 +75,7 @@ function moveISS(oData) {
         if (bDrawISSRoute && aIssRouteFirstDraw) {
             var aDraw = [];
             if (issRouteLive){
+                issRouteLive.remove();
                 aDraw = issRouteLive.getLatLngs();
                 aDraw.push(latlng);
             }
@@ -84,13 +85,11 @@ function moveISS(oData) {
                 aDraw.push(latlng);
                 issRouteLive = L.polyline(aDraw,{
                     className: "gpx",
-                    noClip: true
                 }).addTo(mymap);    
                 bFirstDraw = true;
             } else {
                 issRouteLive = L.polyline(aDraw,{
                     className: "gpx",
-                    noClip: true
                 }).addTo(mymap);
             }        
         }

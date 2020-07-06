@@ -37,8 +37,8 @@ function callBackEndISSDB(){
   var checkbox =  document.getElementById("drawISSroute")
   if (!checkbox.checked) {    
     if (issRoute)
-    issRoute.removeFrom(mymap);
-    issRouteLive.removeFrom(mymap);
+    issRoute.remove();
+    issRouteLive.remove();
     bDrawISSRoute = false;
   } else {
     bDrawISSRoute = true;
