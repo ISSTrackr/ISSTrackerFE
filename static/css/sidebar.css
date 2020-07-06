@@ -371,7 +371,7 @@ input[type="checkbox"]:disabled+label::before {
 #leftBottom{
   overflow-y: auto;
   overflow-x: hidden;
-  height: 95%;
+  height: calc(100vh - 125px);
   scrollbar-width: thin;
 }
 

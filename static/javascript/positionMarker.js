@@ -41,7 +41,7 @@ function addCircle(latlng){
 function mousewheelHandler(e) {
     var wheelMultiplier
     if (e.deltaMode == 0)
-         wheelMultiplier = 120;
+            wheelMultiplier = 120;
         else
             wheelMultiplier = 2;
         
