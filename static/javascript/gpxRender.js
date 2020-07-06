@@ -22,9 +22,9 @@ transform3(xmlDoc, 'xsl/xml2gpx.xsl', function(gpx){
         }
       }).on('loaded', function(e) {
       mymap.fitBounds(e.target.getBounds());
+      document.getElementById("drawISSroute").disabled=false;   
       $(".overlay").hide();
-      $(".loadwrapper").hide();
-      document.getElementById("drawISSroute").disabled=false;     
+      $(".loadwrapper").hide();  
     }).addTo(mymap);
   })
 };
