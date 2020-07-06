@@ -10,7 +10,7 @@ function createMap() {
     // console.log("create map");
     mymap = L.map('mapid',{
         // continuousWorld:false,
-        worldCopyJump:true,
+        // worldCopyJump:true,
         maxBoundsViscosity: 1,
         zoomControl:false,
         contextmenu:true,
