@@ -8,7 +8,7 @@ var aIssRouteFirstDraw;
 var oldLatLng;
 var latlng;
 var issIcon;
-var issRouteLive
+var issRouteLive;
 
 function ISSCall(){
     var oData = {};
