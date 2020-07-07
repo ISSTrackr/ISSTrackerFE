@@ -118,10 +118,9 @@ function followISS(){
     if (document.getElementById("followISS").checked)
         {
             // console.log(issIcon);
-            mymap.setView(latlng,6);  
-            // mymap.setZoom(6);
-            mymap.setMinZoom(6);
-            mymap.setMaxZoom(6);
+            mymap.flyTo(latlng,6,{
+                duration: 1
+            });      
             bFollowISS=true;
             document.getElementById("mapid").style.pointerEvents ="none";
             var kmlLayer = document.getElementsByClassName("leaflet-interactive")
