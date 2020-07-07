@@ -10,7 +10,7 @@ function createMap() {
     // console.log("create map");
     mymap = L.map('mapid',{
         // continuousWorld:false,
-        worldCopyJump:true,
+        // worldCopyJump:true,
         maxBoundsViscosity: 1,
         zoomControl:false,
         contextmenu:true,
@@ -22,7 +22,7 @@ function createMap() {
             text: 'set marker',
             callback: setMarker
         }]
-    });
+    }).setView([0, 0], 7);
 
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
         maxZoom: 7,
