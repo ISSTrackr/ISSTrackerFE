@@ -99,7 +99,8 @@ function moveISS(oData) {
             animate: true,
             duration: 5.0,
             easeLinearity: 1
-        });             
+        });   
+        mymap.setZoom = 6;          
         }
         issIcon.start();
         // console.log("Lang: " + lat + " Long: " + lon);
