@@ -85,15 +85,13 @@ function drawCounties(map, countiesXML) {
     transform3(countiesXML, 'xsl/CountiesXML2KML.xsl', function (oData) {
         // Create new kml overlay
         const parser = new DOMParser();
-        const kml = parser.parseFromString(oData,'text/xml')
-        console.log(oData);
-        console.log(kml);
+        const kml = parser.parseFromString(oData,'text/html')
         const track = new L.KML(kml);
         map.addLayer(track);
 
         // Adjust map to show the kml
-        // const bounds = track.getBounds();
-        // map.fitBounds(bounds);
+        const bounds = track.getBounds();
+        map.fitBounds(bounds);
     })
 
 
