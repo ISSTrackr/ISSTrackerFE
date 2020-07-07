@@ -40,6 +40,7 @@ function callBackEndISSDB(){
     issRoute.remove();
     issRouteLive.remove();
     bDrawISSRoute = false;
+    bFirstDraw = false;
   } else {
     bDrawISSRoute = true;
     oldLatLng = latlng;
