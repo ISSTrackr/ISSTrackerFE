@@ -40,4 +40,3 @@ var ajaxCall = function(oData){
         });
     }
 }
-
