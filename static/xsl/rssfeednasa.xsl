@@ -17,7 +17,7 @@
       </div>
       <div class="rss-text text">
           <h4><xsl:value-of select="title"/></h4>
-          <p><xsl:value-of select="summary"/></p>
+          <p><xsl:value-of select="summary/node()" disable-output-escaping="yes"/></p>
       </div>
   </div>
   </xsl:for-each>
