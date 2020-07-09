@@ -71,7 +71,7 @@ function callBackendDrawCounties(map) {
         xml: "application/xml",
         dataType: 'xml',
         success: function (oReturnData) {
-            console.log(date.toLocaleTimeString() + " | " + "KML " + " Success!")
+            console.log(date.toLocaleTimeString() + " | " + "KML" + " Success!")
             drawCounties(map, oReturnData)
         },
         error: function (oReturnData) {

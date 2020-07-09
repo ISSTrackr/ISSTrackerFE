@@ -68,3 +68,8 @@
    padding-block-start: 0px;
    padding-block-end: 0px;
 }
+
+#flyby, #pastpasses{
+    padding: 5px;
+    position: relative;    
+}
