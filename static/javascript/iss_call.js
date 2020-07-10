@@ -12,26 +12,20 @@ var issRouteLive;
 
 function ISSCall(){
     var oData = {};
-    oData.call = "ISSpos";
-    oData.data =  ""
-    oData.callback = createISS;
-    oData.type = "GET";   
-    ajaxCall(oData);
+    oData.callback = createISS;   
+    issAPICall(oData);
 }
 
 function moveISSCall(){
-    var oData = {};
-    oData.call = "ISSpos";
-    oData.data =  ""
+    var oData = {}; 
     oData.callback = moveISS;
-    oData.type = "GET"; 
-    ajaxCall(oData);
+    issAPICall(oData);
 }
 
 function createISS(oData) {
     // console.log("createISS");     
-    var lat = oData.getElementsByTagName("latitude")[0].innerHTML;
-    var lon = oData.getElementsByTagName("longitude")[0].innerHTML;
+    var lat = oData['iss_position']['latitude'];
+    var lon = oData['iss_position']['longitude'];
 
     latlng = L.latLng(lat, lon);
     mymap.flyTo(latlng, 6);
@@ -45,8 +39,8 @@ function createISS(oData) {
 // function to move the ISS along the Map
 function moveISS(oData) {    
     oldLatLng = latlng;    
-    var lat = oData.getElementsByTagName("latitude")[0].innerHTML;
-    var lon = oData.getElementsByTagName("longitude")[0].innerHTML;
+    var lat = oData['iss_position']['latitude'];
+    var lon = oData['iss_position']['longitude'];
     iss =  {
         "Latitide": lat,
         "Longitude": lon
@@ -108,7 +102,7 @@ function moveISS(oData) {
         {
             document.getElementById("loadwrapper").style.display="none";
             changeCursor('default');  
-            bFirstLoad= false;
+            bFirstLoad= true;
         }
         setTimeout(moveISSCall, 5000);
     }    

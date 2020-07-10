@@ -41,3 +41,7 @@ var ajaxCall = function(oData){
         });
     }
 }
+
+function issAPICall(oData){
+    $.getJSON('http://api.open-notify.org/iss-now.json?callback=?', oData.callback)
+}
