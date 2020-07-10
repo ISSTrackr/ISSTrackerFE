@@ -22,6 +22,7 @@ var ajaxCall = function(oData){
             success: function(oReturnData) { console.log(date.toLocaleTimeString() + " | " +  oData.call + " Success!")
                                             oData.callback(oReturnData, oData.e); },
             error: function(oReturnData) {  console.log(oData.call + ' Failed!');
+                                            oData.callback("error", "");
                                             console.log(oReturnData) }      
         });
     }
@@ -35,7 +36,7 @@ var ajaxCall = function(oData){
             dataType: 'xml',         
             success: function(oReturnData) { console.log(date.toLocaleTimeString() + " | " + oData.call + " Success!")
                                              oData.callback(oReturnData, oData.e); },
-            error: function(oReturnData)   {console.log(oData.call + ' Failed!');
+            error: function(oReturnData)   {console.log(oData.call + ' Failed!');                                         
                                             console.log(oReturnData) }   
         });
     }

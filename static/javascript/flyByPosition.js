@@ -17,6 +17,7 @@ function getFlyByInfo(latlng,bool){
 function callBackEndFlyBy(latlng){
     document.getElementById("pastpasses").innerHTML = "";
     document.getElementById("pastpasses").innerHTML = loadingAnimation;
+    document.getElementById("pastpasses").style.minHeight = "200px";
 
     var oData = {};
 
@@ -34,6 +35,10 @@ function callBackEndFlyBy(latlng){
 
    function renderFlyBy(oData){    
     document.getElementById("pastpasses").innerHTML = "";
+    document.getElementById("pastpasses").style.minHeight = "";
+    if (oData == "error"){
+      document.getElementById("pastpasses").innerHTML = "Server error!";
+    }    
     if(oData.childNodes[1].childNodes[1].childNodes[1].childNodes.length){
     for (var i = 0; i < oData.childNodes[1].childNodes[1].childNodes[1].childNodes.length; i++) {
       if (oData.childNodes[1].childNodes[1].childNodes[1].childNodes[i].childNodes[0].innerHTML)
@@ -50,6 +55,7 @@ function callBackEndFlyBy(latlng){
   function callBackEndFutureFlyBy(latlng){  
     document.getElementById("flyby").innerHTML = "";
     document.getElementById("flyby").innerHTML = loadingAnimation;
+    document.getElementById("flyby").style.minHeight = "200px";
 
     var oData = {};
     
@@ -70,6 +76,7 @@ function callBackEndFlyBy(latlng){
     objDiv.scrollTop = objDiv.scrollHeight;  
     if (oData) {
     document.getElementById("flyby").innerHTML = "";
+    document.getElementById("flyby").style.minHeight = "";
     for (var i = 0; i < oData.childNodes[1].childNodes[1].childNodes[0].childNodes.length; i++) {
       oData.childNodes[1].childNodes[1].childNodes[0].childNodes[i].firstChild.innerHTML = parse2localTime(oData.childNodes[1].childNodes[1].childNodes[0].childNodes[i].firstChild.innerHTML);
     }
