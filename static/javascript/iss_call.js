@@ -108,7 +108,7 @@ function moveISS(oData) {
         {
             document.getElementById("loadwrapper").style.display="none";
             changeCursor('default');  
-            bFirstLoad= false;
+            bFirstLoad= true;
         }
         setTimeout(moveISSCall, 5000);
     }    
