@@ -3,8 +3,8 @@ var bStarted = false;
 function getFlyByInfo(latlng,bool){
     // console.log("Now getting infos for: ");
     // console.log(latlng);
-    callBackEndFlyBy(latlng);
     callBackEndFutureFlyBy(latlng);   
+    callBackEndFlyBy(latlng);
     if (!bStarted) 
     {   
       start(bool);
@@ -33,7 +33,9 @@ function callBackEndFlyBy(latlng){
     ajaxCall(oData);
    }
 
-   function renderFlyBy(oData){    
+   function renderFlyBy(oData){   
+    var objDiv = document.getElementById("leftBottom");
+    objDiv.scrollTop = objDiv.scrollHeight;   
     document.getElementById("pastpasses").innerHTML = "";
     document.getElementById("pastpasses").style.minHeight = "";
     if (oData == "error"){
