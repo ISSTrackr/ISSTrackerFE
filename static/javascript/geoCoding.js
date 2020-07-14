@@ -1,3 +1,4 @@
+
 function countriesCallBackEnd(){
     var oData = {};
     oData.call = "CountryList";                    
@@ -7,11 +8,10 @@ function countriesCallBackEnd(){
 }
 
 function countriesCallback(oData){     
-    transform2(oData, "xsl/countries.xsl", "countries"); // XSL transformation
-    // console.log("country dropdown");   
+    transform2(oData, "xsl/countries.xsl", "countries"); // XSLT    
 }
 
-function callGeoCoding(){
+function callGeoCoding(){ //parsing of input field
     s = document.getElementById('plz').value;
     sParse = addressParser();
     if (sParse)
@@ -57,5 +57,4 @@ function geoCodingCallBack(oData){
   var latlng = L.latLng(lat, lon);
   addMarker(lat,lon);
   mymap.flyTo(latlng,5);
-//   console.log("geoCodingCallBack"); 
 }

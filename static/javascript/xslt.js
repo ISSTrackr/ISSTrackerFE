@@ -19,12 +19,14 @@ function transform(xml, xsl,target) {
     });
 }
 
+// xml transform with local xml
 function transform2(xml, xsl, target) {  
   load(xsl, function(xsltSheet) {
       displayResult(xml, xsltSheet,target);
     });
 }
 
+// xml transform with callback handler
 function transform3(xml, xsl, callback) {  
   load(xsl, function(xsltSheet) {
       callback(returnResult(xml, xsltSheet));
@@ -44,6 +46,7 @@ function displayResult(xmlInput, xsltSheet,target) {
   }
 }
 
+// return for callback
 function returnResult(xmlInput, xsltSheet) {
   if (typeof XSLTProcessor !== 'undefined') {
     var proc = new XSLTProcessor();

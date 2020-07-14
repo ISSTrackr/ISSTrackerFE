@@ -1,12 +1,13 @@
+// functions of the context menu
+
 function setMarker(){
-    bContextMenu = true;
-    // console.log("setMarker at: "+ markerLatlng)
+    bContextMenu = true; 
     toggleMenuOn();  
-    addMarker(markerLatlng.lat,markerLatlng.lng);
+    addMarker(markerLatlng.lat,markerLatlng.lng); // set marker
 }
 
 function getPosition(){
    toggleMenuOn();  
    bContextMenu = true;
-   document.getElementById("plz").value = markerLatlng.lat +", "+ markerLatlng.lng;    
+   document.getElementById("plz").value = markerLatlng.lat +", "+ markerLatlng.lng;  // writes coordinates to search bar  
 }
