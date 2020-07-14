@@ -102,20 +102,6 @@
   .sidebar a {font-size: 18px;}
 }
 
-/* Standard syntax */
-@keyframes infinite-rotate {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(180deg); }
-}
-
-  /* Safari 4.0 - 8.0 */
-@-webkit-keyframes infiniteRotate {
-    0% { -webkit-transform: rotate(0deg); }
-    100% { -webkit-transform: rotate(180deg); }
-}
-
-
-
  /* The sidebar menu */
 .sidebarLeft {
   pointer-events: none;
@@ -212,7 +198,7 @@ margin: auto;
 
 .one {
 float: left;
-
+width: 70%;
 }
 
 .two {
@@ -341,6 +327,7 @@ input[type="checkbox"]:disabled+label::before {
     color: black;
     margin-top: 2.5px;
     pointer-events: auto;
+    width:100%
 }
 
 .input:focus{
@@ -349,10 +336,9 @@ input[type="checkbox"]:disabled+label::before {
 
 /*ISS Button Styling*/
 .issButton{
-    height: 36px;
-    width: 36px;
-    margin-left: 5px;
-    margin-bottom: 2px;
+    height: 58px;
+    width: 58px;
+    margin: 5px;
     padding: 0;
     border-radius: 4px;
     border: 2px solid #ddd;
