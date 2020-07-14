@@ -113,6 +113,7 @@ function toggleNavL(show) {
   function start(bool){
     if (!bool)
      callGeoCoding();
+    document.getElementById("startImage").classList.add("animate");
     document.body.setAttribute('data-theme', 'dark');
     document.getElementById("openbtnLeft").style.display = "";
     document.getElementById("sliderLeft").style.display = "";
@@ -128,5 +129,8 @@ function toggleNavL(show) {
       checkboxes[i].style.display = "block";
     }
     clickedL = true;
+    setTimeout(function(){
+      document.getElementById("startImage").classList.remove("animate");
+    }, 1000);
   }
    document.addEventListener("click", toggleClose)

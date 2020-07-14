@@ -150,3 +150,20 @@
     background-color: rgba(0,0,0,0.5);  
     cursor: wait ;       
   }
+
+  .animate{
+    -webkit-animation: rotate-once 1s ease-in-out; /* Safari */
+    animation: rotate-once 1s ease-in-out;    
+  }
+
+  /* Standard syntax */
+@keyframes rotate-once {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+  /* Safari 4.0 - 8.0 */
+@-webkit-keyframes rotate-once {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
