@@ -53,6 +53,10 @@ transform3(oData, 'xsl/xml2gpx.xsl', function(gpx){
           } 
           mymap.fitBounds(e.target.getBounds());
           document.getElementById("drawISSroute").disabled=false;
+          if (clickedL)
+            toggleNavL();
+          if (clickedR)
+            toggleNav();
           toggleLoading(true);
     }).addTo(mymap);
   })
