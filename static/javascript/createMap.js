@@ -5,6 +5,7 @@ var menu;
 var menuState;
 var active;
 var bStart = false;
+var mymap;
 
 function createMap() {
     // console.log("create map");
@@ -22,6 +23,23 @@ function createMap() {
             text: 'set marker',
             callback: setMarker
         }]
+    }).on("zoomend", function(){
+        // console.log("zooooom");
+        // console.log("Zoom: " + this.getZoom());
+        var wpWidthHeight = (Math.sqrt((this.getZoom()/3))*(this.getZoom()/3)*(this.getZoom()/3)*30).toFixed(0);
+        var offset = (wpWidthHeight/2).toFixed(0);
+        var waypoints = document.getElementsByClassName("waypoints");
+        if (waypoints){
+            // console.log(waypoints);
+            for (var i = 0; i < waypoints.length; i++){
+                waypoints[i].style.height = wpWidthHeight + "px";
+                waypoints[i].style.width = wpWidthHeight + "px";
+                waypoints[i].style["margin-top"]= -offset + "px";
+                waypoints[i].style["margin-left"]= -offset + "px";                
+            }
+            // console.log(waypoints);
+        }        
+        
     }).setView([0, 0], 7);
 
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {

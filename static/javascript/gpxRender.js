@@ -1,13 +1,23 @@
 var issRoute;
 
 function renderGPX(oData){
-var xmlDoc = oData;
+  if ( oData.childNodes[1].childNodes[1].childNodes.length ){
+    for ( var i = 0; i < oData.childNodes[1].childNodes[1].childNodes.length; i++ )
+    {
+      if ( oData.childNodes[1].childNodes[1].childNodes[i].childNodes.length )
+      {
+        for ( var j = 0; j < oData.childNodes[1].childNodes[1].childNodes[i].childNodes.length; j++ ){
+          oData.childNodes[1].childNodes[1].childNodes[i].childNodes[j].attributes[0].nodeValue = parse2localTime(oData.childNodes[1].childNodes[1].childNodes[i].childNodes[j].attributes[0].nodeValue);
+        }
+      }
+    }
+  }
 var j = oData.childNodes[1].childNodes[1].childNodes.length-1;
 var k = oData.childNodes[1].childNodes[1].childNodes[j].childNodes.length-1;
 var lat = oData.childNodes[1].childNodes[1].childNodes[j].childNodes[k].childNodes[0].innerHTML;
 var lon = oData.childNodes[1].childNodes[1].childNodes[j].childNodes[k].childNodes[1].innerHTML;
 aIssRouteFirstDraw = L.latLng(parseFloat(lat),parseFloat(lon));
-transform3(xmlDoc, 'xsl/xml2gpx.xsl', function(gpx){
+transform3(oData, 'xsl/xml2gpx.xsl', function(gpx){
   if (issRoute)
     issRoute.removeFrom(mymap);
 
@@ -16,8 +26,12 @@ transform3(xmlDoc, 'xsl/xml2gpx.xsl', function(gpx){
       marker_options: {
         startIconUrl: '',
         endIconUrl: '',
-        shadowUrl: ''
-      },    wptIconUrls: '',
+        shadowUrl: '',
+        className:"waypoints",
+        wptIconUrls: {
+          '':'images/waypoint.png',          
+        }
+      },   
         polyline_options: {
           className: "gpx",
           color: 'green',
