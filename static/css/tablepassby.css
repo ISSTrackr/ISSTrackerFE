@@ -1,9 +1,6 @@
-/* #flyby, #pastpasses{
+#pastpasses .text{
     padding: 5px;   
-    position: relative;
-    min-height: 200px;
-    font-size: small;
-} */
+ } 
 
 .flyOver h2{
     text-align: center;
@@ -20,7 +17,7 @@
 
 #flyby table{
     width: -moz-available;
-    width: -webkit-fill-available;
+    width: -webkit-fill-available;    
 }
 
 #flyby th{

@@ -3,25 +3,28 @@ var bFuture;
 var bPast;
 
 function getFlyByInfo(latlng,bool){
+    document.getElementById("flyby").innerHTML = "";
+    document.getElementById("flyby").innerHTML = loadingAnimation;
+    document.getElementById("pastpasses").innerHTML = "";
+    document.getElementById("pastpasses").innerHTML = loadingAnimation;
     bFuture=false;
     bPast=false;
     // console.log("Now getting infos for: ");
     // console.log(latlng);
     callBackEndFutureFlyBy(latlng);   
-    callBackEndFlyBy(latlng);
-    toggleLoading(false,false);
+    toggleLoading(false,false);    
     if (!bStarted) 
     {   
       start(bool);
       bStarted=true;
     }
       else
-    toggleNavL(true);
+      toggleNavL(true);
+   
+
   }
 
 function callBackEndFlyBy(latlng){
-    document.getElementById("pastpasses").innerHTML = "";
-    document.getElementById("pastpasses").innerHTML = loadingAnimation;
     document.getElementById("pastpasses").style.minHeight = "200px";
 
     var oData = {};
@@ -62,9 +65,7 @@ function callBackEndFlyBy(latlng){
       toggleLoading(true);
 }
 
-  function callBackEndFutureFlyBy(latlng){  
-    document.getElementById("flyby").innerHTML = "";
-    document.getElementById("flyby").innerHTML = loadingAnimation;
+  function callBackEndFutureFlyBy(latlng){
     document.getElementById("flyby").style.minHeight = "200px";
 
     var oData = {};
@@ -97,7 +98,7 @@ function callBackEndFlyBy(latlng){
      document.getElementById("flyby").innerHTML = "<h2>No passes in the near future</h2>";
 
     objDiv.scrollTop = objDiv.scrollHeight;    
-
+    callBackEndFlyBy(latlng);
     bFuture = true;
     if(bPast && bFuture)
       toggleLoading(true);

@@ -126,16 +126,17 @@
         </div>
     </div>
     <div  id = "leftBottom" class="container">
-        <div class="checkbox-hidden">
-            <div class="checkbox1">
-                <input type="checkbox" id="followISS" name="followISS" onchange="followISS()" class="radioBtn" >
-                <label for="followISS"></label>
+        <div id ="leftBottomTop">
+            <div class="checkbox-hidden">
+                <div class="checkbox1">
+                    <input type="checkbox" id="followISS" name="followISS" onchange="followISS()" class="radioBtn" >
+                    <label for="followISS"></label>
+                </div>
+                <div class="checkbox2">
+                    <input type="checkbox" id="drawISSroute" name="drawISSroute" onchange="callBackEndISSDB()" class="radioBtn">
+                    <label for="drawISSroute"></label>
+                </div>
             </div>
-            <div class="checkbox2">
-                <input type="checkbox" id="drawISSroute" name="drawISSroute" onchange="callBackEndISSDB()" class="radioBtn">
-                <label for="drawISSroute"></label>
-            </div>
-        </div>
             <div class="three" id="sliderLeft" style="display:none">
                 <input type="range" min="1" max="72" value="36" class="slider" id="iss_range" onchange="sliderTimeMoved()">
                 <p class="slider-text">Last positions in minutes: <span id="last_pos"></span>&nbsp;min</p>
@@ -147,7 +148,7 @@
                     <label for="switchToLightmode"></label>
                 </div>
             </div>    
-            
+        </div>   
         <div class="flyOver">
             <div id="flyby" style="display:none"></div>
             <div id="pastpasses" style="display:none"></div>
