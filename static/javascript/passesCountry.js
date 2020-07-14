@@ -42,7 +42,6 @@ if( xmlDoc.childNodes[1].childNodes[1].childNodes[1].childNodes.length){
 }
     document.getElementById("countryPasses").innerHTML = "";
     transform2(xmlDoc, 'xsl/countryflyby.xsl', "countryPasses");
-    // console.log("PopUp: onCountry");
     toggleLoading(true);
     setCountryPopUp = false;
 }

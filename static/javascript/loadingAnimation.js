@@ -1,3 +1,4 @@
+// HTML elements for loading animation in DIVs
 {
     var loadingAnimation= '<div class="middle">'+
     '<div class="loader2 inner" style="position: absolute;"></div>'+

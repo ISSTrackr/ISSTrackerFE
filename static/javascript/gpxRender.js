@@ -6,22 +6,23 @@ function renderGPX(oData){
     {
       if ( oData.childNodes[1].childNodes[1].childNodes[i].childNodes.length )
       {
-        for ( var j = 0; j < oData.childNodes[1].childNodes[1].childNodes[i].childNodes.length; j++ ){
+        for ( var j = 0; j < oData.childNodes[1].childNodes[1].childNodes[i].childNodes.length; j++ ){ // parse to locale time
           oData.childNodes[1].childNodes[1].childNodes[i].childNodes[j].attributes[0].nodeValue = parse2localTime(oData.childNodes[1].childNodes[1].childNodes[i].childNodes[j].attributes[0].nodeValue);
         }
       }
     }
   }
+
 var j = oData.childNodes[1].childNodes[1].childNodes.length-1;
 var k = oData.childNodes[1].childNodes[1].childNodes[j].childNodes.length-1;
 var lat = oData.childNodes[1].childNodes[1].childNodes[j].childNodes[k].childNodes[0].innerHTML;
 var lon = oData.childNodes[1].childNodes[1].childNodes[j].childNodes[k].childNodes[1].innerHTML;
-aIssRouteFirstDraw = L.latLng(parseFloat(lat),parseFloat(lon));
-transform3(oData, 'xsl/xml2gpx.xsl', function(gpx){
-  if (issRoute)
+aIssRouteFirstDraw = L.latLng(parseFloat(lat),parseFloat(lon)); // point for current route live draw
+transform3(oData, 'xsl/xml2gpx.xsl', function(gpx){ // wait for transform then draw GPX
+  if (issRoute) // if route is already drawn remove
     issRoute.removeFrom(mymap);
 
-  issRoute = new L.GPX(gpx, {
+  issRoute = new L.GPX(gpx, { // create new GPX
       async: true, 
       marker_options: {
         startIconUrl: '',
@@ -29,17 +30,17 @@ transform3(oData, 'xsl/xml2gpx.xsl', function(gpx){
         shadowUrl: '',
         className:"waypoints",
         wptIconUrls: {
-          '':'images/waypoint.png',          
+          '':'images/waypoint.png',  //set waypoint marker        
         }
       },   
-        polyline_options: {
-          className: "gpx",
+        polyline_options: { //overwritten in CSS
+          className: "gpx", 
           color: 'green',
           opacity: 0.75,
           weight: 3,
           lineCap: 'round'
         }
-      }).on('loaded', function(e) {
+      }).on('loaded', function(e) { // set circles for cirst draw
         var wpWidthHeight = (Math.sqrt((mymap.getZoom()/3))*(mymap.getZoom()/3)*(mymap.getZoom()/3)*30).toFixed(0);
         var offset = (wpWidthHeight/2).toFixed(0);
         var waypoints = document.getElementsByClassName("waypoints");
@@ -51,8 +52,8 @@ transform3(oData, 'xsl/xml2gpx.xsl', function(gpx){
                 waypoints[i].style["margin-left"]= -offset + "px";                
             } 
           } 
-          mymap.fitBounds(e.target.getBounds());
-          document.getElementById("drawISSroute").disabled=false;
+          mymap.fitBounds(e.target.getBounds()); //show whole route
+          document.getElementById("drawISSroute").disabled = false; // remove 
           if (clickedL)
             toggleNavL();
           if (clickedR)
