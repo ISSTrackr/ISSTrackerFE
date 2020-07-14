@@ -40,26 +40,40 @@ transform3(oData, 'xsl/xml2gpx.xsl', function(gpx){
           lineCap: 'round'
         }
       }).on('loaded', function(e) {
-      mymap.fitBounds(e.target.getBounds());
-      document.getElementById("drawISSroute").disabled = false;   
-      document.getElementById("loadwrapper").style.display = "none";
+        var wpWidthHeight = (Math.sqrt((mymap.getZoom()/3))*(mymap.getZoom()/3)*(mymap.getZoom()/3)*30).toFixed(0);
+        var offset = (wpWidthHeight/2).toFixed(0);
+        var waypoints = document.getElementsByClassName("waypoints");
+        if (waypoints){
+                for (var i = 0; i < waypoints.length; i++){
+                waypoints[i].style.height = wpWidthHeight + "px";
+                waypoints[i].style.width = wpWidthHeight + "px";
+                waypoints[i].style["margin-top"]= -offset + "px";
+                waypoints[i].style["margin-left"]= -offset + "px";                
+            } 
+          } 
+          mymap.fitBounds(e.target.getBounds());
+          document.getElementById("drawISSroute").disabled=false;
+          toggleLoading(true);
     }).addTo(mymap);
   })
 };
 
 function callBackEndISSDB(){
-  var checkbox =  document.getElementById("drawISSroute")
+  var checkbox =  document.getElementById("drawISSroute");
+  var slider = document.getElementById("iss_range");
   if (!checkbox.checked) {    
     if (issRoute)
     issRoute.remove();
     issRouteLive.remove();
     bDrawISSRoute = false;
     bFirstDraw = false;
-  } else {
+    slider.disabled = false;
+  } else {    
     bDrawISSRoute = true;
     oldLatLng = latlng;
-    checkbox.disabled = true;    
-    document.getElementById("loadwrapper").style.display="";
+    checkbox.disabled = true;   
+    slider.disabled = true;
+    toggleLoading(false,true);
     var x =  getCurrentTime();
     var y = getSliderTime();
 

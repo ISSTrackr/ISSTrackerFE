@@ -1,10 +1,15 @@
 var bStarted = false;
+var bFuture;
+var bPast;
 
 function getFlyByInfo(latlng,bool){
+    bFuture=false;
+    bPast=false;
     // console.log("Now getting infos for: ");
     // console.log(latlng);
     callBackEndFutureFlyBy(latlng);   
     callBackEndFlyBy(latlng);
+    toggleLoading(false,false);
     if (!bStarted) 
     {   
       start(bool);
@@ -52,6 +57,9 @@ function callBackEndFlyBy(latlng){
     // console.log("renderFlyBy");
     var objDiv = document.getElementById("leftBottom");
     objDiv.scrollTop = objDiv.scrollHeight;    
+    bPast = true;
+    if(bPast && bFuture)
+      toggleLoading(true);
 }
 
   function callBackEndFutureFlyBy(latlng){  
@@ -86,6 +94,11 @@ function callBackEndFlyBy(latlng){
     // console.log("renderFutureFlyBy");     
     }
     else
-    document.getElementById("flyby").innerHTML = "<h2>No passes in the near future</h2>";
+     document.getElementById("flyby").innerHTML = "<h2>No passes in the near future</h2>";
+
     objDiv.scrollTop = objDiv.scrollHeight;    
+
+    bFuture = true;
+    if(bPast && bFuture)
+      toggleLoading(true);
   }

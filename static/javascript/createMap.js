@@ -141,6 +141,23 @@ function removePopUps() {
 var i_text = 1;
 var i_start = 5;
 
+function toggleLoading(bool,icon){
+    if(bool){
+        document.getElementById("loadwrapper").style.display="none";
+        document.getElementById("overlay").style.display="none";
+        changeCursor('default');  
+    }
+    else
+    {
+        if (icon){
+        document.getElementById("loadwrapper").style.display="table";
+        }
+        document.getElementById("overlay").style.display="block";
+        changeCursor('wait');  
+    }
+}
+
+
 // loading text animation, can be scapped, when loading times improve.
 function loadingText() {
     var s = "establishing satelite link...";

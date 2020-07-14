@@ -56,6 +56,7 @@
   display: flex;
   align-items: center;
   scrollbar-width: thin;
+  z-index: 20;
 }
 
 .sidebar:hover {
@@ -92,6 +93,7 @@
 #main {
   transition: margin-right .5s; /* If you want a transition effect */
   padding:0;
+  z-index: 20;
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
@@ -119,7 +121,7 @@
   pointer-events: none;
   overflow: hidden;
   height: inherit;
-  width: 250px; /* 0 width - change this with JavaScript */
+  width: 260px; /* 0 width - change this with JavaScript */
   background-color: var(--color-left);
   position: fixed; /* Stay in place */
   z-index: 1; /* Stay on top */
@@ -163,7 +165,7 @@
   padding: 10px 15px;
   border: none;
   margin-top: 30px;
-  margin-left: 250px;
+  margin-left: 260px;
   border-radius: 0 10px 10px 0;
 }
 

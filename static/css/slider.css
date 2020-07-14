@@ -11,6 +11,22 @@
   border-radius: 5px;
 }
 
+.slider:disabled{
+  background-color: gray;
+  color: gray;
+  cursor:not-allowed;
+}
+
+.slider:disabled::-webkit-slider-thumb{
+  background: darkgray;
+  cursor:not-allowed;
+}
+
+.slider:disabled::-moz-range-thumb{
+  background: darkgray;
+  cursor:not-allowed;
+}
+
 .slider:hover {
   opacity: 1;
 }
