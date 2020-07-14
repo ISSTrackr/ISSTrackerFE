@@ -2,7 +2,7 @@
 var setCountryPopUp = false;
 var country;
 function onCountry(countryName){
-    toggleLoading(false,false);
+    toggleLoading(false,false,true);
     country = countryName;
     changeCursor('wait');
     if(!setCountryPopUp){

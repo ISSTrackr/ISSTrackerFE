@@ -77,7 +77,7 @@ function callBackEndISSDB(){
     oldLatLng = latlng;
     checkbox.disabled = true;   
     slider.disabled = true;
-    toggleLoading(false,true);
+    toggleLoading(false,true,true);
     var x =  getCurrentTime();
     var y = getSliderTime();
 
