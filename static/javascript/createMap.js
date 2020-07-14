@@ -142,16 +142,28 @@ function removePopUps() {
 var i_text = 1;
 var i_start = 5;
 
-function toggleLoading(bool,icon){
+function toggleLoading(bool,icon,inputs){
     if(bool){
         document.getElementById("loadwrapper").style.display="none";
         document.getElementById("overlay").style.display="none";
         changeCursor('default');  
+        document.getElementById("plz").disabled = false;
+        document.getElementById("country").disabled = false;
+        document.getElementById("close-image").disabled = false;
+        document.getElementById("position_radius").disabled = false;
+        document.getElementById("drawISSroute").disabled = false;
     }
     else
     {
+        if(inputs){
+            document.getElementById("plz").disabled = true;
+            document.getElementById("country").disabled = true;
+            document.getElementById("close-image").disabled = true;
+            document.getElementById("position_radius").disabled = true;
+            document.getElementById("drawISSroute").disabled = true;
+        }
         if (icon){
-        document.getElementById("loadwrapper").style.display="table";
+            document.getElementById("loadwrapper").style.display="table";
         }
         document.getElementById("overlay").style.display="block";
         changeCursor('wait');  

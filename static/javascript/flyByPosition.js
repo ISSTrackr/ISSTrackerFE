@@ -2,7 +2,8 @@ var bStarted = false;
 var bFuture;
 var bPast;
 
-function getFlyByInfo(latlng,bool){
+function getFlyByInfo(latlng,bool){    
+    toggleLoading(false,false,true);
     document.getElementById("flyby").innerHTML = "";
     document.getElementById("flyby").innerHTML = loadingAnimation;
     document.getElementById("pastpasses").innerHTML = "";
@@ -60,6 +61,7 @@ function callBackEndFlyBy(latlng){
     // console.log("renderFlyBy");
     var objDiv = document.getElementById("leftBottom");
     objDiv.scrollTop = objDiv.scrollHeight;    
+    toggleLoading(true);
     bPast = true;
     if(bPast && bFuture)
       toggleLoading(true);
