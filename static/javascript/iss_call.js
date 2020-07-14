@@ -107,6 +107,7 @@ function moveISS(oData) {
         if (!bFirstLoad)
         {
             document.getElementById("loadwrapper").style.display="none";
+            document.getElementById("overlay").style.display="none";
             changeCursor('default');  
             bFirstLoad= true;
         }

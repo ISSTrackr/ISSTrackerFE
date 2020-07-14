@@ -5,6 +5,7 @@ var menu;
 var menuState;
 var active;
 var bStart = false;
+var mymap;
 
 function createMap() {
     // console.log("create map");
@@ -22,6 +23,23 @@ function createMap() {
             text: 'set marker',
             callback: setMarker
         }]
+    }).on("zoomend", function(){
+        // console.log("zooooom");
+        // console.log("Zoom: " + this.getZoom());
+        var wpWidthHeight = (Math.sqrt((this.getZoom()/3))*(this.getZoom()/3)*(this.getZoom()/3)*30).toFixed(0);
+        var offset = (wpWidthHeight/2).toFixed(0);
+        var waypoints = document.getElementsByClassName("waypoints");
+        if (waypoints){
+            // console.log(waypoints);
+            for (var i = 0; i < waypoints.length; i++){
+                waypoints[i].style.height = wpWidthHeight + "px";
+                waypoints[i].style.width = wpWidthHeight + "px";
+                waypoints[i].style["margin-top"]= -offset + "px";
+                waypoints[i].style["margin-left"]= -offset + "px";                
+            }
+            // console.log(waypoints);
+        }        
+        
     }).setView([0, 0], 7);
 
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
@@ -30,7 +48,8 @@ function createMap() {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
             '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
             'Imagery <a href="https://www.mapbox.com/">Mapbox</a>, ' +
-            '<a href="impressum.html">Impressum<a> ',
+            '<a href="impressum.html">Impressum</a> | '+
+            '<a href="impressum.html">Help <i class="material-icons" style="font-size:10px">help</i></a>',
         id: 'mapbox/satellite-streets-v11',
         tileSize: 512,
         zoomOffset: -1
@@ -122,6 +141,23 @@ function removePopUps() {
 
 var i_text = 1;
 var i_start = 5;
+
+function toggleLoading(bool,icon){
+    if(bool){
+        document.getElementById("loadwrapper").style.display="none";
+        document.getElementById("overlay").style.display="none";
+        changeCursor('default');  
+    }
+    else
+    {
+        if (icon){
+        document.getElementById("loadwrapper").style.display="table";
+        }
+        document.getElementById("overlay").style.display="block";
+        changeCursor('wait');  
+    }
+}
+
 
 // loading text animation, can be scapped, when loading times improve.
 function loadingText() {

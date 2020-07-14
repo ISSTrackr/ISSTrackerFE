@@ -72,8 +72,8 @@ function toggleNavL(show) {
       document.getElementById("arrowright").style.transform = "rotate(0deg)";
       controls[0].style.right = "0";
 
-      document.getElementById("mySidebarLeft").style.left = "-250px";
-      document.getElementById("mainLeft").style.marginLeft = "-250px";
+      document.getElementById("mySidebarLeft").style.left = "-260px";
+      document.getElementById("mainLeft").style.marginLeft = "-260px";
       document.getElementById("arrowleft").style.transform = "rotate(180deg)";
 
       clickedL = false;
@@ -81,7 +81,7 @@ function toggleNavL(show) {
       clickedBoth = false;
 
       // close only right -> implemented because of side-effects from start() function
-    } else if (clickedR && !clickedL && mouseClickWidth<=755 && window.getComputedStyle(document.getElementById("mySidebarLeft")).getPropertyValue('left') === "-250px") {
+    } else if (clickedR && !clickedL && mouseClickWidth<=755 && window.getComputedStyle(document.getElementById("mySidebarLeft")).getPropertyValue('left') === "-260px") {
       document.getElementById("mySidebar").style.right = "-800px";
       document.getElementById("main").style.marginRight = "0px";
       document.getElementById("arrowright").style.transform = "rotate(0deg)";
@@ -89,8 +89,8 @@ function toggleNavL(show) {
       
       clickedR = false;
     } else if (clickedL && !clickedR && mouseClickWidth>=295 && window.getComputedStyle(document.getElementById("mySidebar")).getPropertyValue('right') === "-800px") {
-      document.getElementById("mySidebarLeft").style.left = "-250px";
-      document.getElementById("mainLeft").style.marginLeft = "-250px";
+      document.getElementById("mySidebarLeft").style.left = "-260px";
+      document.getElementById("mainLeft").style.marginLeft = "-260px";
       document.getElementById("arrowleft").style.transform = "rotate(180deg)";
 
       clickedL = false;

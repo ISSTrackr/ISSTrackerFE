@@ -2,6 +2,7 @@
 var setCountryPopUp = false;
 var country;
 function onCountry(countryName){
+    toggleLoading(false,false);
     country = countryName;
     changeCursor('wait');
     if(!setCountryPopUp){
@@ -42,6 +43,6 @@ if( xmlDoc.childNodes[1].childNodes[1].childNodes[1].childNodes.length){
     document.getElementById("countryPasses").innerHTML = "";
     transform2(xmlDoc, 'xsl/countryflyby.xsl', "countryPasses");
     // console.log("PopUp: onCountry");
-    changeCursor('default');
+    toggleLoading(true);
     setCountryPopUp = false;
 }
