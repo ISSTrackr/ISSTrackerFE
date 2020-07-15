@@ -118,8 +118,6 @@ function toggleNavL(show) {
     document.getElementById("openbtnLeft").style.display = "";
     document.getElementById("sliderLeft").style.display = "";
     document.getElementById("sliderRadius").style.display = "";
-    document.getElementById("flyby").style.display = "";
-    document.getElementById("pastpasses").style.display = "";
     document.getElementById("mySidebarLeft").style.pointerEvents = "auto";
     document.getElementById("mainLeft").style.pointerEvents = "auto";
     bStart = true;
