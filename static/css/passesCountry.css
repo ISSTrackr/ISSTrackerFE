@@ -7,6 +7,11 @@
     background: none;
     opacity: .9;
     z-index: 1;
+    box-shadow: none;
+}
+
+.leaflet-popup-content b{
+    color: transparent;
 }
 
 .leaflet-popup-content-wrapper:hover{
