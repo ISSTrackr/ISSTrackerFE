@@ -2,8 +2,8 @@
 var setCountryPopUp = false;
 var country;
 var routePopup = document.getElementsByClassName('leaflet-popup-pane')
-function onCountry(countryName, destination){
-    toggleLoading(false,true,true);
+function onCountry(countryName, destination){    
+    toggleLoading(false,!destination,true);
     country = countryName;
     changeCursor('wait');
     if(!setCountryPopUp){
