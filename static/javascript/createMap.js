@@ -77,122 +77,12 @@ function createMap() {
     callBackendDrawCounties(mymap);
 }
 
-//call to get XML for KML
-function callBackendDrawCounties(map) {
-    var date = new Date();
-    $.ajax({
-        crossDomain: true,
-        type: 'GET',
-        url: 'xml/xmlForCounties.xml',
-        xml: "application/xml",
-        dataType: 'xml',
-        success: function (oReturnData) {
-            console.log(date.toLocaleTimeString() + " | " + "KML" + " Success!")
-            drawCounties(map, oReturnData)
-        },
-        error: function (oReturnData) {
-            console.log(oData.call + ' Failed!');
-            console.log(oReturnData)
-        }
-    });
-}
-
-// draw KML
-function drawCounties(map, countiesXML) {
-    // XSLT XML to KML
-    transform3(countiesXML, 'xsl/CountiesXML2KML.xsl', function (oData) {
-        // create new KML overlay
-        const parser = new DOMParser();
-        const kml = parser.parseFromString(oData,'text/html')
-        const track = new L.KML(kml);
-        map.addLayer(track);
-
-        // adjust map to show the KML
-        const bounds = track.getBounds();
-        map.fitBounds(bounds);
-    })
-}
-
-// context menu
-function toggleMenuOn(e) {
-    if (menuState !== 1) {
-        menuState = 1;
-        menu.classList.add(active);
-        menu.style.left = e.x + "px";
-        menu.style.top = e.y + "px";
-    } else {
-        menuState = 0;
-        menu.classList.remove(active);
-    }
-}
-
-//dummy function
-function showCoordinate() {
-
-}
-
 // function to remove all popups on website
 function removePopUps() {
     if (menuState == 1)
         toggleMenuOn();
     document.getElementById("issOnBoard").innerHTML = "";
     bCrewPopUp = false;
-}
-function toggleLoading(bool,icon,inputs){
-    if(bool){
-        document.getElementById("loadwrapper").style.display="none";
-        document.getElementById("overlay").style.display="none";
-        changeCursor('default');  
-        document.getElementById("plz").disabled = false;
-        document.getElementById("country").disabled = false;
-        document.getElementById("close-image").disabled = false;
-        document.getElementById("position_radius").disabled = false;
-        document.getElementById("drawISSroute").disabled = false;
-    }
-    else
-    {
-        if(inputs){
-            document.getElementById("plz").disabled = true;
-            document.getElementById("country").disabled = true;
-            document.getElementById("close-image").disabled = true;
-            document.getElementById("position_radius").disabled = true;
-            document.getElementById("drawISSroute").disabled = true;
-        }
-        if (icon){
-            document.getElementById("loadwrapper").style.display="table";
-        }
-        document.getElementById("overlay").style.display="block";
-        changeCursor('wait');  
-    }
-}
-
-// loading text animation
-var i_text = 1;
-var i_start = 5;
-    
-function loadingText() {
-    var s = "establishing satelite link...";
-
-    $("#loadingText").text(s.slice(0, i_start + i_text));
-    if (i_text == s.length) {
-        i_text = 1;
-        i_start = 5;
-    } else {
-        i_text++;
-        if (i_text % 2 == 0)
-            i_start++;
-    }
-    setTimeout(loadingText, 20);
-}
-
-// function to change cursor
-function changeCursor(cursor) {
-    document.body.style.cursor = cursor;   
-}
-
-// function to get slider time
-function getSliderTime() {
-    return getCurrentTime(getSliderValue());
 }
 
 // function to write date string for back end call

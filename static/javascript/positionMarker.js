@@ -2,8 +2,10 @@
 var radius;
 var circle;
 var posMarker;
+var bFromMarker = false;
 
 function addMarker(lat,lng,bool){
+    bFromMarker = true;
     if (posMarker)
         posMarker.removeFrom(mymap);
     var latlng = L.latLng(lat, lng);
@@ -18,6 +20,7 @@ function addMarker(lat,lng,bool){
     });
     posMarker.on('moveend', function(e){
         bContextMenu = true;   
+        bFromMarker = true;
         getFlyByInfo(e.target._latlng);
     })
 }

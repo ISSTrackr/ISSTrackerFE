@@ -15,12 +15,17 @@ function countriesCallback(oData){
 function callGeoCoding(){ //parsing of input field
     if (!bGeoCodingInProgress) {
         bGeoCodingInProgress= true;
-        s = document.getElementById('plz').value;
+        var plz = document.getElementById('plz').value;
+        var countryName = document.getElementById('country').value;
         sParse = addressParser();
         if (sParse)
         {
-            if (document.getElementById('plz').value.indexOf(",") == -1 )
-                geoCodingCallBackEnd(addressParser());
+            if (plz == "" &&  countryName != "" && !bFromMarker){
+                geoCodingCallBackEnd(sParse, countryName);
+                document.getElementById("flyOver").innerHTML = '<div id=passContainer><p class="text"  style="margin-bottom: -40px;">loading country passes...</p><div id="countrypassesSidebar">' + loadingAnimation + '</div></div>'
+            }
+            else if(plz != "" && plz.indexOf(",") == -1)
+                geoCodingCallBackEnd(sParse);
             else
             {
                 var sLatlon = document.getElementById('plz').value;
@@ -32,6 +37,7 @@ function callGeoCoding(){ //parsing of input field
                 addMarker(lat,lon,true);
             }
         }
+        else {bGeoCodingInProgress = false;}
     }   
 }
 
@@ -42,8 +48,9 @@ function addressParser(){
         return "" + zipCode + ", " + country;
 }
 
-function geoCodingCallBackEnd(q){
+function geoCodingCallBackEnd(q, countryName){
     var oData = {};
+    oData.e = countryName;
     oData.call = "GeocodingAddress";
     oData.data =        "<requestName>Geocoding</requestName>" +
                             "<params>" +
@@ -54,11 +61,14 @@ function geoCodingCallBackEnd(q){
     ajaxCall(oData);
 }
 
-function geoCodingCallBack(oData){    
+function geoCodingCallBack(oData,countryName){    
     var xmlDoc = oData;
     var lat = parseFloat(xmlDoc.childNodes[1].childNodes[1].childNodes[0].innerHTML);
     var lon = parseFloat(xmlDoc.childNodes[1].childNodes[1].childNodes[1].innerHTML);
     var latlng = L.latLng(lat, lon);
-    addMarker(lat,lon);
+    if (countryName == "")
+        addMarker(lat,lon);
+    else
+        onCountry(countryName, true)
     mymap.flyTo(latlng,5);
 }
