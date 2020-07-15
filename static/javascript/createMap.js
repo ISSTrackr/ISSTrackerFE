@@ -252,11 +252,8 @@ $(document).ready(function () {
 
     $('form input').keydown(function (e) { // catch key inputs in form field
         if (e.keyCode == 13) {
-            e.preventDefault();
-            if (bStart)
-                callGeoCoding();
-            else
-                start();
+            e.preventDefault();         
+                start(false);
             return false;
         }
     });

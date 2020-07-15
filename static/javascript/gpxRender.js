@@ -30,7 +30,8 @@ transform3(oData, 'xsl/xml2gpx.xsl', function(gpx){ // wait for transform then d
         shadowUrl: '',
         className:"waypoints",
         wptIconUrls: {
-          '':'images/waypoint.png',  //set waypoint marker        
+          '':'images/waypoint.png',  //set waypoint marker  
+          className:"wppopup"      
         }
       },   
         polyline_options: { //overwritten in CSS

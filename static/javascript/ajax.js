@@ -18,7 +18,6 @@ var ajaxCall = function(oData){
             url: 'https://iss-trackr-api.azurewebsites.net/' + oData.call,        
             xml: "application/xml",
             dataType: 'xml',
-            cache: false,
             headers: {  'Access-Control-Allow-Origin': 'https://iss-trackr-api.azurewebsites.net/' + oData.call},   // CORS
             data: oData.data,
             success: function(oReturnData) { console.log(date.toLocaleTimeString() + " | " +  oData.call + " Success!")

@@ -1,6 +1,4 @@
 var bStarted = false;
-var bFuture;
-var bPast;
 
 // start flyby infos
 function getFlyByInfo(latlng,bool){    
@@ -43,6 +41,9 @@ function callBackEndFlyBy(latlng){
     document.getElementById("pastpasses").style.minHeight = "";
     if (oData == "error"){
       document.getElementById("pastpasses").innerHTML = "Server error!";
+      toggleLoading(true);
+      bGeoCodingInProgress = false;
+      return;
     }    
     // parse all times in table to locale time
     if(oData.childNodes[1].childNodes[1].childNodes[1].childNodes.length){
@@ -55,10 +56,8 @@ function callBackEndFlyBy(latlng){
     transform2(oData, 'xsl/pastpasses.xsl',"pastpasses"); // XSLT
     var objDiv = document.getElementById("leftBottom");
     objDiv.scrollTop = objDiv.scrollHeight;    
-    toggleLoading(true); // remove loading screen
-    bPast = true;
-    if(bPast && bFuture)
-      toggleLoading(true);
+    toggleLoading(true); // remove loading screen  
+    bGeoCodingInProgress = false;
 }
 
   function callBackEndFutureFlyBy(latlng){
@@ -97,7 +96,4 @@ function callBackEndFlyBy(latlng){
 
     objDiv.scrollTop = objDiv.scrollHeight;    
     callBackEndFlyBy(latlng);
-    bFuture = true;
-    if(bPast && bFuture)
-      toggleLoading(true);
   }

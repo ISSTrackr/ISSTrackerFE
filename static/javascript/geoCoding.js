@@ -1,10 +1,11 @@
+var bGeoCodingInProgress = false;
 
-function countriesCallBackEnd(){
-    var oData = {};
-    oData.call = "CountryList";                    
-    oData.callback = countriesCallback;
-    oData.type = "GET";
-    ajaxCall(oData);
+function countriesCallBackEnd(){    
+        var oData = {};
+        oData.call = "CountryList";                    
+        oData.callback = countriesCallback;
+        oData.type = "GET";
+        ajaxCall(oData); 
 }
 
 function countriesCallback(oData){     
@@ -12,23 +13,26 @@ function countriesCallback(oData){
 }
 
 function callGeoCoding(){ //parsing of input field
-    s = document.getElementById('plz').value;
-    sParse = addressParser();
-    if (sParse)
-    {
-        if (document.getElementById('plz').value.indexOf(",") == -1 )
-            geoCodingCallBackEnd(addressParser());
-        else
+    if (!bGeoCodingInProgress) {
+        bGeoCodingInProgress= true;
+        s = document.getElementById('plz').value;
+        sParse = addressParser();
+        if (sParse)
         {
-            var sLatlon = document.getElementById('plz').value;
-            sLatlon = sLatlon.split(",");  
-            var lat = sLatlon[0];
-            var lon = sLatlon[1];
-            var lat = parseFloat(lat);
-            var lon = parseFloat(lon);
-            addMarker(lat,lon,true);
+            if (document.getElementById('plz').value.indexOf(",") == -1 )
+                geoCodingCallBackEnd(addressParser());
+            else
+            {
+                var sLatlon = document.getElementById('plz').value;
+                sLatlon = sLatlon.split(",");  
+                var lat = sLatlon[0];
+                var lon = sLatlon[1];
+                var lat = parseFloat(lat);
+                var lon = parseFloat(lon);
+                addMarker(lat,lon,true);
+            }
         }
-    }
+    }   
 }
 
 function addressParser(){
@@ -50,11 +54,11 @@ function geoCodingCallBackEnd(q){
     ajaxCall(oData);
 }
 
-function geoCodingCallBack(oData){
-  var xmlDoc = oData;
-  var lat = parseFloat(xmlDoc.childNodes[1].childNodes[1].childNodes[0].innerHTML);
-  var lon = parseFloat(xmlDoc.childNodes[1].childNodes[1].childNodes[1].innerHTML);
-  var latlng = L.latLng(lat, lon);
-  addMarker(lat,lon);
-  mymap.flyTo(latlng,5);
+function geoCodingCallBack(oData){    
+    var xmlDoc = oData;
+    var lat = parseFloat(xmlDoc.childNodes[1].childNodes[1].childNodes[0].innerHTML);
+    var lon = parseFloat(xmlDoc.childNodes[1].childNodes[1].childNodes[1].innerHTML);
+    var latlng = L.latLng(lat, lon);
+    addMarker(lat,lon);
+    mymap.flyTo(latlng,5);
 }
