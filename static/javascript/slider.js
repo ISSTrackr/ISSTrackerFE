@@ -25,11 +25,14 @@ function getRadiusSliderValue(){
 function sliderRadiusMoved(){
   if(posMarker)
   {
-    callBackEndFlyBy(posMarker._latlng);
+    getFlyByInfo(posMarker._latlng);
   }
 }
 
 // function to get slider time
 function getSliderTime() {
   return getCurrentTime(getSliderValue());
+}
+function sliderTimeMoved(){
+  callBackEndISSDB()
 }

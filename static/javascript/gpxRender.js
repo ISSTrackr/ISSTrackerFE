@@ -59,6 +59,7 @@ transform3(oData, 'xsl/xml2gpx.xsl', function(gpx){ // wait for transform then d
             toggleNavL();
           if (clickedR)
             toggleNav();
+          document.getElementById("iss_range").disabled = false;
           toggleLoading(true);
     }).addTo(mymap);
   })
@@ -69,11 +70,12 @@ function callBackEndISSDB(){
   var slider = document.getElementById("iss_range");
   if (!checkbox.checked) {    
     if (issRoute)
-    issRoute.remove();
-    issRouteLive.remove();
+      issRoute.remove();    
+    if (issRouteLive )
+      issRouteLive.remove();
     bDrawISSRoute = false;
     bFirstDraw = false;
-    slider.disabled = false;
+   
   } else {    
     bDrawISSRoute = true;
     oldLatLng = latlng;
