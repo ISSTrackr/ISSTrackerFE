@@ -22,7 +22,9 @@ function callGeoCoding(){ //parsing of input field
         {
             if (plz == "" &&  countryName != "" && !bFromMarker){
                 geoCodingCallBackEnd(sParse, countryName);
-                document.getElementById("flyOver").innerHTML = '<div id=passContainer><p class="text"  style="margin-bottom: -40px;">loading country passes...</p><div id="countrypassesSidebar">' + loadingAnimation + '</div></div>'
+                document.getElementById("flyOver").innerHTML = '<div id=passContainer>' +
+                                                               '<p class="text"  id="loadingPasses" style="margin-bottom: -40px;">loading country passes...</p>' +
+                                                               '<div id="countrypassesSidebar">' + loadingAnimation + '</div></div>'
             }
             else if(plz != "" && plz.indexOf(",") == -1)
                 geoCodingCallBackEnd(sParse);

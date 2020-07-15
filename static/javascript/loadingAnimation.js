@@ -105,26 +105,6 @@ function loadingText() {
     setTimeout(loadingText, 20);
 }
 
-var loadingOption = {};
-
-function loadingText2(string, target) {
-    if (string, target) {
-    loadingOption.string = string;
-    loadingOption.target = "#" + target;
-    } else return;
-
-    $( loadingOption.target).text(s.slice(0, i_start + i_text));
-    if (i_text == loadingOption.string) {
-        i_text = 1;
-        i_start = 5;
-    } else {
-        i_text++;
-        if (i_text % 2 == 0)
-            i_start++;
-    }
-    setTimeout(loadingText, 20);
-}
-
 // function to change cursor
 function changeCursor(cursor) {
     document.body.style.cursor = cursor;   
