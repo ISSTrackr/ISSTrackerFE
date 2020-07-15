@@ -1,10 +1,10 @@
 // Backendcall for RSS-Feed
 
-var startRss = 0;
-var endRss = 5;
+var startRss = 0; // start element
+var endRss = 5; // end element
 var bRSSStart = false;
 
-function rssClick(e){
+function rssClick(e){ // paging
     if (e === -1 && startRss !== 0){
         endRss = startRss;
         startRss = startRss - 5;
@@ -43,9 +43,9 @@ function RSSCallback(oData){
     }
     else
     {        
-        if (bRSSStart)
-            rssClick(-1);
+        if (bRSSStart) 
+            rssClick(-1); //if element is empty go one page back
         else
-            setTimeout(rssCall, 5000);
+            setTimeout(rssCall, 5000); //try to call again if empty
     }
 }

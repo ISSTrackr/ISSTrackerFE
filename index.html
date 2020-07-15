@@ -5,6 +5,7 @@
     <title>ISS Tracker</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!------------------------------------------------------------------------------------------>
     <!-------------------------------- CSS Stylesheets ----------------------------------------->
     <!------------------------------------------------------------------------------------------>
@@ -40,6 +41,7 @@
     <script type="text/javascript" src="javascript/geoCoding.js"></script>
     <script type="text/javascript" src="javascript/gpxRender.js"></script>    
     <script type="text/javascript" src="javascript/iss_call.js"></script>
+    <script type="text/javascript" src="javascript/kml.js"></script>
     <script type="text/javascript" src="javascript/loadingAnimation.js"></script>
     <script type="text/javascript" src="javascript/passesCountry.js"></script>
     <script type="text/javascript" src="javascript/positionMarker.js"></script>
@@ -53,11 +55,11 @@
 <body style="height:100%;margin:0" data-theme="opacity">
 
 <!------------------------ Class for loading animation ------------------------------------------------------>
-
+<div id="overlay"></div>
 <div class="loadwrapper outer" id="loadwrapper" style="pointer-events: auto;">    
     <div class="middle">
         <div class="loader inner" style="position: absolute;"></div>
-        <div class="logo inner" style="position: absolute;">
+        <div class="logo inner" style="position: absolute;cursor:wait">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 500" height="300" width="300" class="logo-iss">
                 <defs id="defs6396">
                     <clipPath id="clipPath1384" clipPathUnits="userSpaceOnUse">
@@ -103,40 +105,42 @@
 <div id = "mySidebarLeft" class="sidebarLeft">    
     <div  id = "leftTop" class="container" style="margin-top: 30px; margin-bottom: 5px;">
         <div class="one">
-            <div id="input" style="float:left;z-index:1; background-color :transparent">
+            <div id="input" style="z-index:1; background-color :transparent">
                 <form>
                     <input class="input" type="text" id="plz" name="plz" autofocus placeholder="Enter ZIP Code" style="height: 30px" tabindex="1">
                 </form>
             </div>
+            <form>
+                <input class="input" list="countries"  id="country" name="countries" placeholder="Enter country" style="height: 30px;" tabindex="2">
+                <datalist id="countries">                  
+                </datalist>
+                <input type="hidden">
+            </form>
         </div>
         <div class="two">
-            <button id="close-image" onclick="start()" class="issButton" tabindex="3"><img
-                    src="images/iss_top.png"></button>
+            <button id="close-image" onclick="start()" class="issButton" tabindex="3"><img id="startImage" style="top: 14px;position: absolute;left: 184px;scale: 1.2;"
+                    src="images/iss_top.png"><span style="position: absolute; top: 43px; left: 189px;">GO!</span></button>
         </div>
-		<form>
-            <input class="input" list="countries"  id="country" name="countries" placeholder="Enter country" style="height: 30px;" tabindex="2">
-            <datalist id="countries">                  
-            </datalist>
-            <input type="hidden">
-        </form>
+
         <div class="four" id="sliderRadius" style="display:none">
-            <input type="range" min="20" max="500" value="100" class="slider" id="position_radius"  onchange="sliderRadiusMoved()">
+            <input type="range" min="20" max="500" value="250" class="slider" id="position_radius"  onchange="sliderRadiusMoved()">
             <p class="slider-text">Radius around position: <span id="radius"> </span>&nbsp;km</p>
         </div>
     </div>
     <div  id = "leftBottom" class="container">
-        <div class="checkbox-hidden">
-            <div class="checkbox1">
-                <input type="checkbox" id="followISS" name="followISS" onchange="followISS()" class="radioBtn" >
-                <label for="followISS"></label>
+        <div id ="leftBottomTop">
+            <div class="checkbox-hidden">
+                <div class="checkbox1">
+                    <input type="checkbox" id="followISS" name="followISS" onchange="followISS()" class="radioBtn" >
+                    <label for="followISS"></label>
+                </div>
+                <div class="checkbox2">
+                    <input type="checkbox" id="drawISSroute" name="drawISSroute" onchange="callBackEndISSDB()" class="radioBtn">
+                    <label for="drawISSroute"></label>
+                </div>
             </div>
-            <div class="checkbox2">
-                <input type="checkbox" id="drawISSroute" name="drawISSroute" onchange="callBackEndISSDB()" class="radioBtn">
-                <label for="drawISSroute"></label>
-            </div>
-        </div>
             <div class="three" id="sliderLeft" style="display:none">
-                <input type="range" min="1" max="72" value="36" class="slider" id="iss_range" onchange="sliderTimeMoved()">
+                <input type="range" min="1" max="72" value="10" class="slider" id="iss_range">
                 <p class="slider-text">Last positions in minutes: <span id="last_pos"></span>&nbsp;min</p>
             </div>
         
@@ -146,12 +150,10 @@
                     <label for="switchToLightmode"></label>
                 </div>
             </div>    
-            
-        <div class="flyOver">
-            <div id="flyby" style="display:none"></div>
-            <div id="pastpasses" style="display:none"></div>
-        </div>
+        </div>   
 
+        <div id="flyOver" class="flyOver">
+        </div>
     </div>
     </div>    
 </div>

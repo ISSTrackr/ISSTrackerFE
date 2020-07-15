@@ -6,6 +6,7 @@
     height: fit-content;
     background: none;
     opacity: .9;
+    z-index: 1;
 }
 
 .leaflet-popup-content-wrapper:hover{
