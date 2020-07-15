@@ -5,6 +5,8 @@ var posMarker;
 var bFromMarker = false;
 
 function addMarker(lat,lng,bool){
+    if (!lat || !lng)
+        return;
     bFromMarker = true;
     if (posMarker)
         posMarker.removeFrom(mymap);
