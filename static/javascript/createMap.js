@@ -83,6 +83,7 @@ function removePopUps() {
         toggleMenuOn();
     document.getElementById("issOnBoard").innerHTML = "";
     bCrewPopUp = false;
+    routePopup[0].style.display = 'none';
 }
 
 // function to write date string for back end call
