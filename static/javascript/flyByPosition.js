@@ -20,9 +20,9 @@ function getFlyByInfo(latlng,bool){
    
       function callBackEndFutureFlyBy(latlng){
         document.getElementById("flyby").style.minHeight = "200px"; // heigth for loading animation
-    
-        var oData = {}; // object for AJAX call
         
+        var oData = {}; // object for AJAX call
+        oData.e = latlng;
         oData.call = "ISSfuturePasses";
         oData.data =        "<requestName>ISSfuturePasses</requestName>" +
                                 "<params>" +
@@ -53,7 +53,7 @@ function getFlyByInfo(latlng,bool){
          document.getElementById("flyby").innerHTML = "<h2>No passes in the near future</h2>";
     
         objDiv.scrollTop = objDiv.scrollHeight;    
-        callBackEndFlyBy(latlng);
+        callBackEndFlyBy(oData.e);
       }
 
 function callBackEndFlyBy(latlng){
