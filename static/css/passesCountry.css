@@ -1,4 +1,8 @@
 /* leaflet-PopUp */
+.leaflet-popup-pane{
+    display: none;
+}
+
 .leaflet-popup-content-wrapper{
     min-width: 380px;
     width: fit-content;
@@ -8,6 +12,7 @@
     opacity: .9;
     z-index: 1;
     box-shadow: none;
+    /* display: none; */
 }
 
 .leaflet-popup-content b{

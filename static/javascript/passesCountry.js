@@ -1,8 +1,9 @@
 // function that handles click on country 
 var setCountryPopUp = false;
 var country;
+var routePopup = document.getElementsByClassName('leaflet-popup-pane')
 function onCountry(countryName, destination){
-    toggleLoading(false,false,true);
+    toggleLoading(false,true,true);
     country = countryName;
     changeCursor('wait');
     if(!setCountryPopUp){
@@ -33,6 +34,7 @@ function callCountryBackEnd(countryName, destination){
 // creation of html DOM
 function countryCallBack(oData, e){
     var xmlDoc = oData;
+    routePopup[0].style.display = 'block';
 if( xmlDoc.childNodes[1].childNodes[1].childNodes[1].childNodes.length){
     for (var i = 0; i < xmlDoc.childNodes[1].childNodes[1].childNodes[1].childNodes.length; i++)
     {
