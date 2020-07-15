@@ -35,7 +35,7 @@ function getFlyByInfo(latlng,bool){
         ajaxCall(oData);
        }
       
-       function renderFutureFlyBy(oData){
+       function renderFutureFlyBy(oData, latlng){
         var objDiv = document.getElementById("leftBottom");
         objDiv.scrollTop = objDiv.scrollHeight;  
         if (oData) {
@@ -53,7 +53,7 @@ function getFlyByInfo(latlng,bool){
          document.getElementById("flyby").innerHTML = "<h2>No passes in the near future</h2>";
     
         objDiv.scrollTop = objDiv.scrollHeight;    
-        callBackEndFlyBy(oData.e);
+        callBackEndFlyBy(latlng);
       }
 
 function callBackEndFlyBy(latlng){
