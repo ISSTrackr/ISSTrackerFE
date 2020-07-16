@@ -16,7 +16,7 @@
 }
 
 .leaflet-popup-content b{
-    color: transparent;
+    display: none;
 }
 
 .leaflet-popup-content-wrapper:hover{
