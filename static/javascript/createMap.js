@@ -148,4 +148,26 @@ $(document).ready(function () {
             return false;
         }
     });
+    var showTutorial = getCookie("tutorial") == "true" ? false : true;
+    document.getElementById("startupTutorialCB").checked = !showTutorial;
+    if (showTutorial) {
+      openModal();
+    }
+
 });
+
+function getCookie(cname) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i <ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
