@@ -44,7 +44,7 @@ function displayResult(xmlInput, xsltSheet,target) {
   else if (typeof xmlInput.transformNode !== 'undefined') {
     document.getElementById(target).innerHTML = xmlInput.transformNode(xsltSheet);
   }
-  if (target == "pastpasses" || target == "flyby"){
+  if (target == "pastpasses" || target == "flyby" || target == "countryContent"){
     var objDiv = document.getElementById("leftBottom");
     objDiv.scrollTop = objDiv.scrollHeight; 
   }  
