@@ -304,7 +304,24 @@ input[type="checkbox"]:disabled+label::before {
      font-family: Verdana, sans-serif;
 }
 
+.startupTutorial input[type="checkbox"] + label::after {
+     content: "Don't show this again on startup";
+     position: absolute;
+     left: 70px;
+     top: 0;
+     width: 300px;
+     color: var(--color-color);
+     font-family: Verdana, sans-serif;
+}
+
 .checkboxdarklightmode{
+     width: 100%;
+     position: static;
+     height: 40px;
+     margin-bottom: 30px;
+}
+
+.startupTutorial{
      width: 100%;
      position: static;
      height: 40px;

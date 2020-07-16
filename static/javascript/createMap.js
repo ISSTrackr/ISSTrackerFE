@@ -43,7 +43,7 @@ function createMap() {
             '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
             'Imagery <a href="https://www.mapbox.com/">Mapbox</a>, ' +
             '<a href="impressum.html">Impressum</a> | '+
-            '<button id="tutorial" onclick="openModal()">Help<i class="material-icons" style="font-size:10px">help</i></button>',
+            '<a id="tutorial" href="javascript:openModal()">Help<i class="material-icons" style="font-size:10px">help</i></a>',
         id: 'mapbox/satellite-streets-v11',
         tileSize: 512,
         zoomOffset: -1
@@ -148,4 +148,26 @@ $(document).ready(function () {
             return false;
         }
     });
+    var showTutorial = getCookie("tutorial") == "true" ? false : true;
+    document.getElementById("startupTutorialCB").checked = !showTutorial;
+    if (showTutorial) {
+      openModal();
+    }
+
 });
+
+function getCookie(cname) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i <ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
