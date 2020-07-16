@@ -205,12 +205,21 @@ img {vertical-align: middle;}
 /* Modal Content/Box */
 .modal-content {
   background-color: var(--color-bg-opacity);
-  margin: 10% auto; /* 15% from the top and centered */
-  padding: 20px;
+  margin: 3% auto; /* 15% from the top and centered */
+  padding: 20px 20px 10px 20px;
   border: 1px solid #888;
 	border-radius: 10px;
-  width: 65%; /* Could be more or less, depending on screen size */
+  width: 60%; /* Could be more or less, depending on screen size */
 	/*height: 100vh;*/
+}
+
+.slideshow-container-tutorial{
+  width: -moz-available;
+  width: -webkit-fill-available;
+}
+
+.startupTutorial{
+  margin-bottom: 0px;
 }
 
 /* The Close Button */
