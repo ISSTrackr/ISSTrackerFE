@@ -53,3 +53,8 @@
         transform: rotate(360deg);
     }
 }
+
+.leaflet-container .leaflet-control-attribution{
+    font-size: 14px;
+    padding-right: 10px;
+}
