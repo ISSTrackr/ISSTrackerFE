@@ -5,7 +5,6 @@ function getFlyByInfo(latlng,bool){
     toggleLoading(false,false,true); // start loading animation
     document.getElementById("flyOver").innerHTML = '<div id=futureContainer><p class="text" style="margin-bottom: -40px;">loading future passes...</p><div id="flyby"></div></div>'+
                                                    '<div id=pastContainer><p class="text"  style="margin-bottom: -40px;">loading past passes...</p><div id="pastpasses"></div></div>'
-                                                  
     document.getElementById("flyby").innerHTML = loadingAnimation; // small animations    
     document.getElementById("pastpasses").innerHTML = loadingAnimation; // small animations
     bFuture=false;
@@ -36,8 +35,6 @@ function getFlyByInfo(latlng,bool){
        }
       
        function renderFutureFlyBy(oData, latlng){
-        var objDiv = document.getElementById("leftBottom");
-        objDiv.scrollTop = objDiv.scrollHeight;  
         if (oData) {
           document.getElementById("futureContainer").innerHTML = '<div id="flyby"></div>';
           document.getElementById("flyby").style.minHeight = "";
@@ -50,9 +47,8 @@ function getFlyByInfo(latlng,bool){
           transform2(oData, 'xsl/flyby.xsl',"flyby"); // XSLT
           }
         else // if no passes
-         document.getElementById("flyby").innerHTML = "<h2>No passes in the near future</h2>";
-    
-        objDiv.scrollTop = objDiv.scrollHeight;    
+         document.getElementById("flyby").innerHTML = "<h2>No passes in the near future</h2>";    
+  
         callBackEndFlyBy(latlng);
       }
 
@@ -74,8 +70,6 @@ function callBackEndFlyBy(latlng){
    }
 
    function renderFlyBy(oData){   
-    var objDiv = document.getElementById("leftBottom");
-    objDiv.scrollTop = objDiv.scrollHeight;   
     document.getElementById("pastContainer").innerHTML = '<div id="pastpasses"></div>';
     document.getElementById("pastpasses").style.minHeight = "";
     if (oData == "error"){
@@ -94,8 +88,6 @@ function callBackEndFlyBy(latlng){
         oData.childNodes[1].childNodes[1].childNodes[1].childNodes[i].childNodes[1].innerHTML = parse2localTime(oData.childNodes[1].childNodes[1].childNodes[1].childNodes[i].childNodes[1].innerHTML);
     }}
     transform2(oData, 'xsl/pastpasses.xsl',"pastpasses"); // XSLT
-    var objDiv = document.getElementById("leftBottom");
-    objDiv.scrollTop = objDiv.scrollHeight;    
     toggleLoading(true); // remove loading screen  
     bGeoCodingInProgress = false;
     bFromMarker = false;

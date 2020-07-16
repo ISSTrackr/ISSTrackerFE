@@ -43,7 +43,7 @@ function createMap() {
             '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
             'Imagery <a href="https://www.mapbox.com/">Mapbox</a>, ' +
             '<a href="impressum.html">Impressum</a> | '+
-            '<a id="tutorial" href="javascript:openModal()">Help<i class="material-icons" style="font-size:10px">help</i></a>',
+            '<a id="tutorial" onclick="openModal()" style="cursor:pointer">Help<i class="material-icons" id="helpIcon">help</i></a>',
         id: 'mapbox/satellite-streets-v11',
         tileSize: 512,
         zoomOffset: -1

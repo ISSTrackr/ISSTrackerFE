@@ -53,3 +53,15 @@
         transform: rotate(360deg);
     }
 }
+
+.leaflet-container .leaflet-control-attribution{
+    font-size: 14px;
+    padding-right: 22px;
+}
+
+#helpIcon{
+    font-size: 17px;
+    position: absolute;
+    bottom: 2px;
+    right: 5px;
+}
