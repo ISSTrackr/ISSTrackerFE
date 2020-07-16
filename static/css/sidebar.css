@@ -10,7 +10,8 @@
   --color-rss: #f2f2f2;
   --color-slider: #EEE;
   --color-slider-border: #DDD;
-  --color-button-hover: #444
+  --color-button-hover: #444;
+  --color-bg-opacity: rgba(0,0,0,0.4)
 }
 
 [data-theme="light"] {
@@ -23,7 +24,8 @@
   --color-rss: #000000;
   --color-slider: #EEE;
   --color-slider-border: #DDD;
-  --color-button-hover: #aaa
+  --color-button-hover: #aaa;
+  --color-bg-opacity: rgba(255,255,255,0.6)
 }
 
 [data-theme="opacity"] {
@@ -36,7 +38,8 @@
   --color-rss: #f2f2f2;
   --color-slider: #EEE;
   --color-slider-border: #DDD;
-  --color-button-hover: #444
+  --color-button-hover: #444;
+  --color-bg-opacity: rgba(0,0,0,0.4)
 }
 
 /* The sidebar menu */
@@ -112,12 +115,12 @@
   position: fixed; /* Stay in place */
   z-index: 1; /* Stay on top */
   top: 0;
-  left: 0px; 
-  opacity: 0.9; 
+  left: 0px;
+  opacity: 0.9;
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 10px; /* Place content 60px from the top */
   transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
-  color: var(--color-color);  
+  color: var(--color-color);
 }
 
 .sidebarLeft:hover {
@@ -254,7 +257,7 @@ width: 70%;
      transition: margin 0.1s linear;
      box-shadow: 0px 0px 2px #aaa;
  }
- 
+
  input[type="checkbox"]:checked+label{
      background-color: rgb(11, 61, 145);
  }
@@ -317,7 +320,7 @@ input[type="checkbox"]:disabled+label::before {
 .checkbox2{
      width: 100%;
      position: static;
-     height: 40px;  
+     height: 40px;
 }
 
 /* Input styling*/
@@ -354,7 +357,7 @@ input[type="checkbox"]:disabled+label::before {
 
 #leftTop{
   position: relative;
-  
+
 }
 
 #leftBottom{
