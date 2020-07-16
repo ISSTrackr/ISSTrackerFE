@@ -9,7 +9,7 @@ var mymap;
 
 // Leaflet map is created
 function createMap() {
-    mymap = L.map('mapid', {       
+    mymap = L.map('mapid', {
         maxBoundsViscosity: 1,
         zoomControl: false,
         contextmenu: true,
@@ -25,14 +25,14 @@ function createMap() {
                var wpWidthHeight = (Math.sqrt((this.getZoom()/3))*(this.getZoom()/3)*(this.getZoom()/3)*30).toFixed(0);
         var offset = (wpWidthHeight/2).toFixed(0);
         var waypoints = document.getElementsByClassName("waypoints");
-        if (waypoints){            
+        if (waypoints){
             for (var i = 0; i < waypoints.length; i++){
                 waypoints[i].style.height = wpWidthHeight + "px";
                 waypoints[i].style.width = wpWidthHeight + "px";
                 waypoints[i].style["margin-top"]= -offset + "px";
-                waypoints[i].style["margin-left"]= -offset + "px";                
-            }           
-        }   
+                waypoints[i].style["margin-left"]= -offset + "px";
+            }
+        }
     }).setView([0, 0], 7);
 
     // get map tiles from 'mapbox'
@@ -43,13 +43,13 @@ function createMap() {
             '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
             'Imagery <a href="https://www.mapbox.com/">Mapbox</a>, ' +
             '<a href="impressum.html">Impressum</a> | '+
-            '<a href="impressum.html">Help <i class="material-icons" style="font-size:10px">help</i></a>',
+            '<button id="tutorial" onclick="openModal()">Help<i class="material-icons" style="font-size:10px">help</i></button>',
         id: 'mapbox/satellite-streets-v11',
         tileSize: 512,
         zoomOffset: -1
     }).addTo(mymap);
 
-    // add control layer 
+    // add control layer
     L.control.zoom({position: "bottomright"}).addTo(mymap);
 
     // set map bounds
@@ -64,7 +64,7 @@ function createMap() {
     active = "context-menu--active";
 
     mymap.on('contextmenu', function (e) {
-        removePopUps();          
+        removePopUps();
         markerLatlng = e.latlng;
         toggleMenuOn(e.originalEvent);
     });
@@ -130,7 +130,7 @@ function parse2localTime(s) {
 }
 
 // jQuery function to call all functions, needed for startup
-$(document).ready(function () {      
+$(document).ready(function () {
     changeCursor('wait');
     loadingText(1);
     var mymap;
@@ -143,7 +143,7 @@ $(document).ready(function () {
 
     $('form input').keydown(function (e) { // catch key inputs in form field
         if (e.keyCode == 13) {
-            e.preventDefault();         
+            e.preventDefault();
                 start(false);
             return false;
         }
