@@ -203,8 +203,8 @@ img {vertical-align: middle;}
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
-  /*position: fixed;  Stay in place */
-  z-index: 1; /* Sit on top */
+  position: fixed; 
+  z-index: 20; /* Sit on top */
   left: 0;
   top: 0;
 	text-align: center;
