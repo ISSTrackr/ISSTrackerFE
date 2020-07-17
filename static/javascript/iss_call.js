@@ -95,7 +95,7 @@ function moveISS(oData) {
             duration: 5.0,
             easeLinearity: 1
         });   
-        mymap.setZoom = 6;          
+        // mymap.setZoom = 6;          
         }
         issIcon.start();    
         if (!bFirstLoad)
@@ -115,19 +115,25 @@ function followISS(){
                 duration: 1
             });      
             bFollowISS=true;
-            document.getElementById("mapid").style.pointerEvents ="none";
-            var kmlLayer = document.getElementsByClassName("leaflet-interactive")
+            document.getElementById("mapid").style.pointerEvents = "none";
+            var zoom = document.getElementsByClassName("leaflet-control-zoom");
+            for (var i = 0; i < zoom.length;i++){
+                zoom[i].style.pointerEvents="none";
+            }
+            var kmlLayer = document.getElementsByClassName("leaflet-interactive");
             for (var i = 0; i < kmlLayer.length;i++){
                 kmlLayer[i].style.pointerEvents="none";
             }
         } else {
             bFollowISS=false;
-            mymap.setMinZoom(3);
-            mymap.setMaxZoom(7);
             document.getElementById("mapid").style['pointer-events'] = "auto";
-            var kmlLayer = document.getElementsByClassName("leaflet-interactive")
+            var zoom = document.getElementsByClassName("leaflet-control-zoom");
+            for (var i = 0; i < zoom.length;i++){
+                zoom[i].style.pointerEvents="auto";
+            }
+            var kmlLayer = document.getElementsByClassName("leaflet-interactive");
             for (var i = 0; i < kmlLayer.length;i++){
-                kmlLayer[i].style.pointerEvents="";
+                kmlLayer[i].style.pointerEvents="auto";
             }
         }
 };
