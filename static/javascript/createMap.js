@@ -157,12 +157,6 @@ $(document).ready(function () {
             return false;
         }
     });
-    var showTutorial = getCookie("tutorial") == "true" ? false : true;
-    document.getElementById("startupTutorialCB").checked = !showTutorial;
-    if (showTutorial) {
-      openModal();
-    }
-
 });
 
 function getCookie(cname) {
