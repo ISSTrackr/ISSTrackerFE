@@ -36,16 +36,11 @@ function rssCallBackEnd(start, end){
 
 function RSSCallback(oData){    
 
-    var pat =/(?:[0-9]|0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](19|20)\d\d/
+    var pat =new RegExp("(?:[0-9]|0[1-9]|1[012])[\/](?:[0-9]|0[1-9]|[12][0-9]|3[01])[\/]([0-9][0-9]|(19|20)\d\d)");
     var title = oData.getElementsByTagName("title");
     for (var i = 0; i < title.length;i++){
-       var string = title[i].textContent
-       console.log(string);
-       console.log(title[i].textContent.match(pat));
-       var date = dateFormat(title[i].textContent.match(pat)[0])
-       console.log(date);
-       string.replace(date, dateFormat(date));
-       console.log(string); 
+        if(pat.test(title[i].textContent))
+            title[i].textContent = title[i].textContent.replace(title[i].textContent.match(pat)[0], dateFormat(title[i].textContent.match(pat)[0]));     
     }
     if (oData.childNodes[1].childNodes[1].childNodes.length > 0) 
     {
