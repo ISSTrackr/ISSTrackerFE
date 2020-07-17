@@ -100,6 +100,11 @@ function moveISS(oData) {
         issIcon.start();    
         if (!bFirstLoad)
         {
+            var showTutorial = getCookie("tutorial") == "true" ? false : true;
+            document.getElementById("startupTutorialCB").checked = !showTutorial;
+            if (showTutorial) {
+              openModal();
+            }
             document.getElementById("loadwrapper").style.display="none";
             document.getElementById("overlay").style.display="none";
             changeCursor('default');  
