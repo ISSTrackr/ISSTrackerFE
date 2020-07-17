@@ -129,6 +129,15 @@ function parse2localTime(s) {
     return oDate.toLocaleString();
 }
 
+function dateFormat(date){
+    var date = date.split("/");
+    var oDate = new Date();
+    oDate.setUTCDate(parseInt(date[1]));
+    oDate.setUTCMonth(parseInt(date[0] - 1));
+    oDate.setUTCFullYear(parseInt(date[2]));
+    return oDate.toLocaleDateString();
+}
+
 // jQuery function to call all functions, needed for startup
 $(document).ready(function () {
     changeCursor('wait');
