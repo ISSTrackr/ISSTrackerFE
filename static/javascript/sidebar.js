@@ -10,8 +10,8 @@ function toggleNavL(show) {
   if (!show){
     if (document.getElementById("mySidebarLeft").style.left == "0px" || document.getElementById("mySidebarLeft").style.left == "")
     {
-      document.getElementById("mySidebarLeft").style.left = "-250px";
-      document.getElementById("mainLeft").style.marginLeft = "-250px";
+      document.getElementById("mySidebarLeft").style.left = "-260px";
+      document.getElementById("mainLeft").style.marginLeft = "-260px";
       document.getElementById("arrowleft").style.transform = "rotate(180deg)";
       clickedL = false;
     }
