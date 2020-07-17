@@ -1,5 +1,5 @@
 // Backendcall for RSS-Feed
-
+var counter = 0;
 var startRss = 0; // start element
 var endRss = 5; // end element
 var bRSSStart = false;
@@ -35,6 +35,18 @@ function rssCallBackEnd(start, end){
 }
 
 function RSSCallback(oData){    
+
+    var pat =/(?:[0-9]|0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](19|20)\d\d/
+    var title = oData.getElementsByTagName("title");
+    for (var i = 0; i < title.length;i++){
+       var string = title[i].textContent
+       console.log(string);
+       console.log(title[i].textContent.match(pat));
+       var date = dateFormat(title[i].textContent.match(pat)[0])
+       console.log(date);
+       string.replace(date, dateFormat(date));
+       console.log(string); 
+    }
     if (oData.childNodes[1].childNodes[1].childNodes.length > 0) 
     {
         transform2(oData, 'xsl/rssfeednasa.xsl',"mySidebar"); // XSL transformation
@@ -46,6 +58,10 @@ function RSSCallback(oData){
         if (bRSSStart) 
             rssClick(-1); //if element is empty go one page back
         else
-            setTimeout(rssCall, 5000); //try to call again if empty
+        {
+            counter++;
+            if (counter < 5)
+                setTimeout(rssCall, 5000 * counter); //try to call again if empty
+        }
     }
 }
