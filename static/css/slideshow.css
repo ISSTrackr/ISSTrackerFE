@@ -157,23 +157,6 @@ img {vertical-align: middle;}
   to {opacity: 1}
 }
 
-/* .fade {
-  -webkit-animation-name: fadeout;
-  -webkit-animation-duration: 0.5s;
-  animation-name: fadeout;
-  animation-duration: 0.5s;
-}*/
-
-/* @-webkit-keyframes fadeout {
-  from {opacity: 1}
-  to {opacity: .4}
-}
-
-@keyframes fadeout {
-  from {opacity: 1}
-  to {opacity: .4}
-} */
-
 /* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
   .prev, .next,.text {font-size: 11px}
@@ -259,9 +242,9 @@ img {vertical-align: middle;}
   margin-top: 0px;
 }
 
-/* .slideshow-container-tutorial img:hover{
-  opacity: 0.6;
-} */
+.slideshow-container-tutorial img{
+  width: 90%;
+}
 
 .startupTutorial{
   margin-bottom: 0px;
