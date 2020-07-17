@@ -65,8 +65,8 @@ function geoCodingCallBackEnd(q, countryName){
 
 function geoCodingCallBack(oData,countryName){    
     var xmlDoc = oData;
-    var lat = parseFloat(xmlDoc.childNodes[1].childNodes[1].childNodes[0].innerHTML);
-    var lon = parseFloat(xmlDoc.childNodes[1].childNodes[1].childNodes[1].innerHTML);
+    var lat = parseFloat(oData.getElementsByTagName("latitude")[0].innerHTML);
+    var lon = parseFloat(oData.getElementsByTagName("longitude")[0].innerHTML);
     var latlng = L.latLng(lat, lon);
     if (countryName == "")
         addMarker(lat,lon);
