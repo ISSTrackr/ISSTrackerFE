@@ -35,15 +35,17 @@ function callCountryBackEnd(countryName, destination){
 function countryCallBack(oData, e){
     var xmlDoc = oData;
     routePopup[0].style.display = 'block';
-if( xmlDoc.childNodes[1].childNodes[1].childNodes[1].childNodes.length){
-    for (var i = 0; i < xmlDoc.childNodes[1].childNodes[1].childNodes[1].childNodes.length; i++)
-    {
-       if(xmlDoc.childNodes[1].childNodes[1].childNodes[1].childNodes[i].childNodes[0].innerHTML != "")
-        xmlDoc.childNodes[1].childNodes[1].childNodes[1].childNodes[i].childNodes[0].innerHTML = parse2localTime(xmlDoc.childNodes[1].childNodes[1].childNodes[1].childNodes[i].childNodes[0].innerHTML);
-      if(xmlDoc.childNodes[1].childNodes[1].childNodes[1].childNodes[i].childNodes[1].innerHTML != "")
-        xmlDoc.childNodes[1].childNodes[1].childNodes[1].childNodes[i].childNodes[1].innerHTML = parse2localTime(xmlDoc.childNodes[1].childNodes[1].childNodes[1].childNodes[i].childNodes[1].innerHTML);
+    var startTimes = oData.getElementsByTagName("startTime");
+    var endTimes = oData.getElementsByTagName("endTime");
+    if( startTimes.length){
+        for (var i = 0; i < startTimes.length; i++)
+        {
+            if(startTimes[i].innerHTML != "")
+                startTimes[i].innerHTML = parse2localTime(startTimes[i].innerHTML);
+            if(endTimes[i].innerHTML != "")
+                endTimes[i].innerHTML = parse2localTime(endTimes[i].innerHTML);
+        }
     }
-}
     if (!e.destination){
         document.getElementById("countryPasses").innerHTML = "";
         transform2(xmlDoc, 'xsl/countryflyby.xsl', "countryPasses");

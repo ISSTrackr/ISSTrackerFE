@@ -40,9 +40,14 @@ function getFlyByInfo(latlng,bool){
           document.getElementById("flyby").style.minHeight = "";
     
           // parse all times in table to locale time
-          for (var i = 0; i < oData.childNodes[1].childNodes[1].childNodes[0].childNodes.length; i++) {
-              oData.childNodes[1].childNodes[1].childNodes[0].childNodes[i].firstChild.innerHTML = parse2localTime(oData.childNodes[1].childNodes[1].childNodes[0].childNodes[i].firstChild.innerHTML);
-          }
+          var futurePassDateTime = oData.getElementsByTagName("futurePassDatetime");         
+          if( futurePassDateTime.length){
+            for (var i = 0; i < futurePassDateTime.length; i++)
+            {
+                if(futurePassDateTime[i].innerHTML != "")
+                futurePassDateTime[i].innerHTML = parse2localTime(futurePassDateTime[i].innerHTML); 
+            }
+          } 
     
           transform2(oData, 'xsl/flyby.xsl',"flyby"); // XSLT
           }
@@ -80,13 +85,17 @@ function callBackEndFlyBy(latlng){
       return;
     }    
     // parse all times in table to locale time
-    if(oData.childNodes[1].childNodes[1].childNodes[1].childNodes.length){
-    for (var i = 0; i < oData.childNodes[1].childNodes[1].childNodes[1].childNodes.length; i++) {
-      if (oData.childNodes[1].childNodes[1].childNodes[1].childNodes[i].childNodes[0].innerHTML)
-      oData.childNodes[1].childNodes[1].childNodes[1].childNodes[i].childNodes[0].innerHTML = parse2localTime(oData.childNodes[1].childNodes[1].childNodes[1].childNodes[i].childNodes[0].innerHTML);
-      if (oData.childNodes[1].childNodes[1].childNodes[1].childNodes[i].childNodes[1].innerHTML)
-        oData.childNodes[1].childNodes[1].childNodes[1].childNodes[i].childNodes[1].innerHTML = parse2localTime(oData.childNodes[1].childNodes[1].childNodes[1].childNodes[i].childNodes[1].innerHTML);
-    }}
+    var startTimes = oData.getElementsByTagName("startTime");
+    var endTimes = oData.getElementsByTagName("endTime");
+    if( startTimes.length){
+      for (var i = 0; i < startTimes.length; i++)
+      {
+          if(startTimes[i].innerHTML != "")
+              startTimes[i].innerHTML = parse2localTime(startTimes[i].innerHTML);
+          if(endTimes[i].innerHTML != "")
+              endTimes[i].innerHTML = parse2localTime(endTimes[i].innerHTML);
+      }
+    } 
     transform2(oData, 'xsl/pastpasses.xsl',"pastpasses"); // XSLT
     toggleLoading(true); // remove loading screen  
     bGeoCodingInProgress = false;
