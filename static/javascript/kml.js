@@ -8,14 +8,7 @@ function callBackendDrawCounties(map) {
         url: 'xml/xmlForCounties.xml',
         xml: "application/xml",
         dataType: 'xml',
-        success: function (oReturnData) {
-            console.log(date.toLocaleTimeString() + " | " + "KML" + " Success!")
-            drawCounties(map, oReturnData)
-        },
-        error: function (oReturnData) {
-            console.log(oData.call + ' Failed!');
-            console.log(oReturnData)
-        }
+        success: function (oReturnData) { drawCounties(map, oReturnData) }
     });
 }
 

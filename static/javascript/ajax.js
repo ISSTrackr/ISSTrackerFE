@@ -20,11 +20,8 @@ var ajaxCall = function(oData){
             dataType: 'xml',
             headers: {  'Access-Control-Allow-Origin': 'https://iss-trackr-api.azurewebsites.net/' + oData.call},   // CORS
             data: oData.data,
-            success: function(oReturnData) { console.log(date.toLocaleTimeString() + " | " +  oData.call + " Success!")
-                                            oData.callback(oReturnData, oData.e); },
-            error: function(oReturnData) {  console.log(oData.call + ' Failed!');
-                                            oData.callback("error", "");
-                                            console.log(oReturnData) }      
+            success: function(oReturnData) { oData.callback(oReturnData, oData.e); },
+            error: function() { oData.callback("error", ""); }      
         });
     }
     else // get call
@@ -35,10 +32,7 @@ var ajaxCall = function(oData){
             url: 'https://iss-trackr-api.azurewebsites.net/' + oData.call, 
             xml: "application/xml",       
             dataType: 'xml',         
-            success: function(oReturnData) { console.log(date.toLocaleTimeString() + " | " + oData.call + " Success!")
-                                             oData.callback(oReturnData, oData.e); },
-            error: function(oReturnData)   {console.log(oData.call + ' Failed!');                                         
-                                            console.log(oReturnData) }   
+            success: function(oReturnData) { oData.callback(oReturnData, oData.e); } 
         });
     }
 }
