@@ -1,6 +1,12 @@
 var issRoute;
 
 function renderGPX(oData){
+  if (oData.getElementsByTagName("longitude").length == 0){
+    document.getElementById("iss_range").disabled = false;
+    window.alert("No data points for this time intervall");
+    toggleLoading(true);
+    return;   
+  }
   var dateTime = oData.getElementsByTagName("timeValue");
   if ( dateTime.length ){
     for ( var i = 0; i < dateTime.length; i++ ) {
@@ -9,8 +15,10 @@ function renderGPX(oData){
   }
   var lon = oData.getElementsByTagName("longitude");
   var lat = oData.getElementsByTagName("latitude");
-  lon = lon[lon.length-1].innerHTML;
-  lat = lat[lat.length-1].innerHTML;
+  if (lon.length && locationbar.length){
+    lon = lon[lon.length-1].innerHTML;
+    lat = lat[lat.length-1].innerHTML;
+  }
 
   aIssRouteFirstDraw = L.latLng(parseFloat(lat),parseFloat(lon)); // point for current route live draw
   transform3(oData, 'xsl/xml2gpx.xsl', function(gpx){ // wait for transform then draw GPX
