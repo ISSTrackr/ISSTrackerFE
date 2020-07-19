@@ -15,9 +15,9 @@ function renderGPX(oData){
   }
   var lon = oData.getElementsByTagName("longitude");
   var lat = oData.getElementsByTagName("latitude");
-  if (lon.length && locationbar.length){
-    lon = lon[lon.length-1].innerHTML;
-    lat = lat[lat.length-1].innerHTML;
+  if (lon.length && lat.length){
+    lon = lon[lon.length - 1].textContent;
+    lat = lat[lat.length - 1].textContent;
   }
 
   aIssRouteFirstDraw = L.latLng(parseFloat(lat),parseFloat(lon)); // point for current route live draw
