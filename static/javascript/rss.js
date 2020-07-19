@@ -1,3 +1,5 @@
+"use strict";
+
 // Backendcall for RSS-Feed
 var counter = 0;
 var startRss = 0; // start element

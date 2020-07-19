@@ -1,3 +1,5 @@
+"use strict";
+
 var bGeoCodingInProgress = false;
 
 function countriesCallBackEnd(){    
@@ -17,7 +19,7 @@ function callGeoCoding(){ //parsing of input field
         bGeoCodingInProgress= true;
         var plz = document.getElementById('plz').value;
         var countryName = document.getElementById('country').value;
-        sParse = addressParser();
+        var sParse = addressParser();
         if (sParse)
         {
             if (plz == "" &&  countryName != "" && !bFromMarker){

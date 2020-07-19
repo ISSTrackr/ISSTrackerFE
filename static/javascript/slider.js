@@ -1,3 +1,5 @@
+"use strict";
+
 function getSliderValue() {
     var slider = document.getElementById("iss_range");
     var output = document.getElementById("last_pos");

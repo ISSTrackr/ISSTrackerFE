@@ -1,3 +1,5 @@
+"use strict";
+
 // HTML elements for loading animation in DIVs
 {
     var loadingAnimation= '<div class="middle">'+

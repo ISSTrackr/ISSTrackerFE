@@ -1,3 +1,5 @@
+"use strict";
+
 // jQuery AJAX call to back end. 
 
 var ajaxCall = function(oData){

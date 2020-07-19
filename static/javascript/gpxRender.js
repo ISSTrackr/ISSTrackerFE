@@ -1,3 +1,5 @@
+"use strict";
+
 var issRoute;
 
 function renderGPX(oData){

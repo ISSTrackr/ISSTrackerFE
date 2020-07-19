@@ -1,3 +1,5 @@
+"use strict";
+
 var bStarted = false;
 
 // start flyby infos
@@ -7,12 +9,12 @@ function getFlyByInfo(latlng,bool){
                                                    '<div id=pastContainer><p class="text"  style="margin-bottom: -40px;">loading past passes...</p><div id="pastpasses"></div></div>'
     document.getElementById("flyby").innerHTML = loadingAnimation; // small animations    
     document.getElementById("pastpasses").innerHTML = loadingAnimation; // small animations
-    bFuture=false;
-    bPast=false;
+    var bFuture = false;
+    var bPast = false;
     callBackEndFutureFlyBy(latlng);    
     if (!bStarted) {   // get left sidebar on first call
       start(bool);
-      bStarted=true;
+      bStarted = true;
     } else
       toggleNavL(true);
     }

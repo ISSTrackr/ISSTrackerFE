@@ -1,4 +1,6 @@
-// Mag gets created, for options check leaflet docu
+"use strict";
+
+// Map gets created, for options check leaflet docu
 
 var markerLatlng;
 var menu;
@@ -113,8 +115,8 @@ function pad(n, width, z) {
 // get back end time string and parse it to JS time object and return locale time string
 function parse2localTime(s) {
     s = s.split(" ")
-    date = s[0];
-    time = s[1];
+    var date = s[0];
+    var time = s[1];
     date = date.split("-");
     time = time.split("-");
 
@@ -124,8 +126,7 @@ function parse2localTime(s) {
     oDate.setUTCFullYear(parseInt(date[0]));
     oDate.setUTCHours(parseInt(time[0]));
     oDate.setUTCMinutes(parseInt(time[1]));
-    oDate.setUTCSeconds(parseInt(time[2]));
-    test = oDate.toLocaleString();
+    oDate.setUTCSeconds(parseInt(time[2]));   
     return oDate.toLocaleString();
 }
 

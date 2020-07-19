@@ -1,3 +1,5 @@
+"use strict";
+
 // functions of the context menu
 
 // context menu

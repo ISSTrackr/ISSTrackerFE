@@ -1,3 +1,5 @@
+"use strict";
+
 // function that handles click on country 
 var setCountryPopUp = false;
 var country;

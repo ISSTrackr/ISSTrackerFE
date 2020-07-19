@@ -1,3 +1,5 @@
+"use strict";
+
 // Function to load xml File via URL
 function load(url, callback) {
   var req = new XMLHttpRequest();
@@ -55,8 +57,8 @@ function returnResult(xmlInput, xsltSheet) {
   if (typeof XSLTProcessor !== 'undefined') {
     var proc = new XSLTProcessor();
     proc.importStylesheet(xsltSheet);
-    xml = proc.transformToFragment(xmlInput, document);
-    xmlText = new XMLSerializer().serializeToString(xml)
+    var xml = proc.transformToFragment(xmlInput, document);
+    var xmlText = new XMLSerializer().serializeToString(xml)
    return xmlText
   }
   else if (typeof xmlInput.transformNode !== 'undefined') {

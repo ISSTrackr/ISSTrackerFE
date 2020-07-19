@@ -1,3 +1,4 @@
+"use strict";
 
 var bFollowISS = false;
 var bFirstLoad = false;
@@ -44,10 +45,6 @@ function moveISS(oData) {
     oldLatLng = latlng;    
     var lat = oData.getElementsByTagName("latitude")[0].innerHTML;
     var lon = oData.getElementsByTagName("longitude")[0].innerHTML;
-    iss =  {
-        "Latitide": lat,
-        "Longitude": lon
-    };
     if (issIcon){
         var x = parseFloat(oldLng);
         var y = parseFloat(lon);

@@ -1,3 +1,5 @@
+"use strict";
+
 // function to toggle width of menues, function needs to be adjusted for responsive use
 var clickedBoth = false;
 var clickedL = false;

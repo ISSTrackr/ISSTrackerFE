@@ -1,3 +1,4 @@
+"use strict";
 
 //call to get XML for KML
 function callBackendDrawCounties(map) {

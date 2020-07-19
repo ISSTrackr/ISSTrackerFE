@@ -1,3 +1,5 @@
+"use strict";
+
 var slideIndex = 1;
 var slideIndexTutorial = 1;
 

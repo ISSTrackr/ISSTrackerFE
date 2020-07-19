@@ -1,3 +1,5 @@
+"use strict";
+
 // Function that handles click on ISSIcon
 var bCrewPopUp = false;
 function onBoard(e){  
