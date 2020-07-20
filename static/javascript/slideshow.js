@@ -80,7 +80,3 @@ function showSlidesTutorial(n) {
     else
       showSlidesTutorial(n);
 }
-
-function changeTutorialPref() {
-  document.cookie = "tutorial=" + document.getElementById("startupTutorialCB").checked + "; SameSite= Strict; Secure";
-}

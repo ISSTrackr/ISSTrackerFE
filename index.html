@@ -53,7 +53,7 @@
     <script type="text/javascript" src="javascript/xslt.js"></script>
 </head>
 
-<body style="height:100%;margin:0" data-theme="opacity">
+<body style="height:100%;margin:0" data-theme="opacity-dark">
 
 <!------------------------ Class for loading animation ------------------------------------------------------>
 <div id="overlay"></div>
@@ -277,7 +277,7 @@
     <div class="text">You will be able to choose a color-theme of dark- or light-mode. Examples are seen in the image above.</div>
   </div>
   <div id="startupTutorial" class="startupTutorial">
-    <input type="checkbox" name="startupTutorialCB" id="startupTutorialCB" class="radioBtn" onChange="changeTutorialPref()">
+    <input type="checkbox" name="startupTutorialCB" id="startupTutorialCB" class="radioBtn" onChange="setCookies('tutorial', 'startupTutorialCB')">
     <label for="startupTutorialCB"></label>
 </div>
   <!-- Next and previous buttons -->

@@ -103,12 +103,19 @@ function toggleNavL(show) {
   }
 
   function switchToLightmode() {
-    //document.body.setAttribute('data-theme', 'light');
-    if (document.body.getAttribute("data-theme") === "dark")
-      document.body.setAttribute('data-theme', 'light');
-    else
-      document.body.setAttribute('data-theme', 'dark');
-
+    var b = document.getElementById("switchToLightmode").checked;
+    if(bStart){
+        if(document.getElementById("switchToLightmode").checked)   
+          document.body.setAttribute('data-theme', 'light');
+        else
+          document.body.setAttribute('data-theme', 'dark');
+      } else {
+        if(document.getElementById("switchToLightmode").checked)   
+        document.body.setAttribute('data-theme', 'opacity-light');
+      else
+        document.body.setAttribute('data-theme', 'opacity-dark');
+      }
+    setCookies("lightMode", "switchToLightmode");
   }
 
   // left menu after serch button pressed.
@@ -116,7 +123,9 @@ function toggleNavL(show) {
     if (!bool)
      callGeoCoding();
     document.getElementById("startImage").classList.add("animate");
-    document.body.setAttribute('data-theme', 'dark');
+    var theme = document.body.getAttribute("data-theme");    
+    theme = theme.includes("dark") ? "dark" : "light";
+    document.body.setAttribute('data-theme', theme);
     document.getElementById("openbtnLeft").style.display = "";
     document.getElementById("sliderLeft").style.display = "";
     document.getElementById("sliderRadius").style.display = "";

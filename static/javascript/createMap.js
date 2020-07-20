@@ -150,7 +150,8 @@ $(document).ready(function () {
     getSliderValue();
     rssCall();
     countriesCallBackEnd();
-
+    document.getElementById("switchToLightmode").checked =  getCookie("lightMode") == "true" ? true : false;
+    switchToLightmode();
     $('form input').keydown(function (e) { // catch key inputs in form field
         if (e.keyCode == 13) {
             e.preventDefault();
@@ -175,3 +176,12 @@ function getCookie(cname) {
   }
   return "";
 }
+
+function setCookies(name, oHTML) {
+    var date = new Date;
+    date.setMonth(date.getMonth() + 1);
+    date = date.toUTCString();
+    var checkbox = document.getElementById(oHTML).checked == true ? true : false;
+    var cookie = name + "=" + checkbox +";expires=" + date;
+    document.cookie = cookie;
+  }
