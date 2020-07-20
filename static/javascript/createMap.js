@@ -182,6 +182,6 @@ function setCookies(name, oHTML) {
     date.setMonth(date.getMonth() + 1);
     date = date.toUTCString();
     var checkbox = document.getElementById(oHTML).checked == true ? true : false;
-    var cookie = name + "=" + checkbox +";expires=" + date;
+    var cookie = name + "=" + checkbox +";expires=" + date + ";secure";
     document.cookie = cookie;
   }
