@@ -19,15 +19,17 @@ function callGeoCoding(){ //parsing of input field
         bGeoCodingInProgress = true;
         var plz = document.getElementById('plz').value;
         var countryName = document.getElementById('country').value;
-        var countries = document.getElementsByTagName('option');
-        var aCountries =[];
-        for (var i = 0 ; i<countries.length;i++){
-           aCountries.push(countries[i].value);
-        }
-        if (aCountries.indexOf(countryName) == -1){
-            window.alert("Not a valid country name, please pick a country from the list")
-            bGeoCodingInProgress = false;
-            return;
+        if (countryName != ""){
+            var countries = document.getElementsByTagName('option');
+            var aCountries =[];
+            for (var i = 0 ; i<countries.length;i++){
+            aCountries.push(countries[i].value);
+            }
+            if (aCountries.indexOf(countryName) == -1){
+                window.alert("Not a valid country name, please pick a country from the list")
+                bGeoCodingInProgress = false;
+                return;
+            }
         }
         var sParse = addressParser();
         if (sParse)
