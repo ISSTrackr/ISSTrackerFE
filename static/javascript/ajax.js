@@ -17,10 +17,10 @@ var ajaxCall = function(oData){
             crossDomain: true, // CORS
             contentType: "application/xml; charset=utf-8",    
             type: oData.type,
-            url: 'https://iss-trackr-api.azurewebsites.net/' + oData.call,        
+            url: 'https://api.isstracker.de/' + oData.call,        
             xml: "application/xml",
             dataType: 'xml',
-            headers: {  'Access-Control-Allow-Origin': 'https://iss-trackr-api.azurewebsites.net/' + oData.call},   // CORS
+            headers: {  'Access-Control-Allow-Origin': 'https://api.isstracker.de/' + oData.call},   // CORS
             data: oData.data,
             success: function(oReturnData) { oData.callback(oReturnData, oData.e); },
             error: function() { oData.callback("error", ""); }      
@@ -31,7 +31,7 @@ var ajaxCall = function(oData){
         $.ajax({
             crossDomain: true,  // CORS        
             type: oData.type,            
-            url: 'https://iss-trackr-api.azurewebsites.net/' + oData.call, 
+            url: 'https://api.isstracker.de/' + oData.call, 
             xml: "application/xml",       
             dataType: 'xml',         
             success: function(oReturnData) { oData.callback(oReturnData, oData.e); } 
